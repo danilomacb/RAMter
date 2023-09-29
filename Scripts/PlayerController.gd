@@ -33,17 +33,20 @@ func Shoot():
 		canShoot = false
 		timer.start()
 		
+		var toMouse = get_global_mouse_position()
+		
 		var instantiatedArrow = playerArrow.instantiate()
 		instantiatedArrow.global_position = global_position
+		var transformRotated = instantiatedArrow.transform.looking_at(toMouse)
+		instantiatedArrow.transform = transformRotated
 		
-		var toMouse = get_global_mouse_position() - global_position
+		toMouse -= global_position
 		toMouse = toMouse.normalized()
 		
-		var t = instantiatedArrow.transform.looking_at(toMouse)
-		instantiatedArrow.transform = t
-		
 		get_tree().root.add_child(instantiatedArrow)
-		instantiatedArrow.add_constant_force(toMouse * 300)
+		instantiatedArrow.add_constant_force(toMouse * 1000)
+		
+		print("shoot")
 
 func _on_timer_timeout():
 	canShoot = true
