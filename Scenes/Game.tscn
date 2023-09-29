@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=5 format=3 uid="uid://b000ctuyaiuww"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
+[ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwwc3"]
+texture = ExtResource("1_gk4jy")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_e8jtl"]
+sources/0 = SubResource("TileSetAtlasSource_kwwc3")
+
+[node name="Game" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_e8jtl")
+format = 2
+layer_0/tile_data = PackedInt32Array(-196605, 0, 0, -131069, 0, 0, -65533, 0, 0, 3, 0, 0, 65539, 0, 0, 131075, 0, 0)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_e80ac")]
