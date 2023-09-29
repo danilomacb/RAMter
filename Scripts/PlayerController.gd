@@ -45,8 +45,6 @@ func Shoot():
 		
 		get_tree().root.add_child(instantiatedArrow)
 		instantiatedArrow.add_constant_force(toMouse * 1000)
-		
-		print("shoot")
 
 func _on_timer_timeout():
 	canShoot = true
