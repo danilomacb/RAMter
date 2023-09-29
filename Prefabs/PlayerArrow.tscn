@@ -1,18 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cimt2s3agu4bj"]
+[gd_scene load_steps=4 format=3 uid="uid://cimt2s3agu4bj"]
 
+[ext_resource type="Script" path="res://Scripts/PlayerArrow.gd" id="1_aooo5"]
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_iusrv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ao5b"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uv7kf"]
 size = Vector2(16, 2)
 
-[node name="PlayerArrow" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 0
+[node name="PlayerArrow" type="RigidBody2D" groups=["Arrows"]]
+collision_layer = 4
+collision_mask = 2
 gravity_scale = 0.0
+script = ExtResource("1_aooo5")
 
 [node name="WhiteSquare" type="Sprite2D" parent="."]
 scale = Vector2(1, 0.1)
 texture = ExtResource("1_iusrv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_8ao5b")
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_uv7kf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -7,7 +7,7 @@
 size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 0
+collision_layer = 4
 script = ExtResource("1_elqdo")
 moveSpeed = 100.0
 
