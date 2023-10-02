@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://vcwf3q5q6m5r"]
+[gd_scene load_steps=5 format=3 uid="uid://vcwf3q5q6m5r"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_elqdo"]
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="2_0ms6c"]
+[ext_resource type="Script" path="res://Scripts/Hp.gd" id="3_8bs0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s27x8"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 4
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 20
 script = ExtResource("1_elqdo")
 moveSpeed = 100.0
 
@@ -21,5 +22,9 @@ shape = SubResource("RectangleShape2D_s27x8")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Hp" type="Node" parent="."]
+script = ExtResource("3_8bs0d")
+maxHp = 3.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
