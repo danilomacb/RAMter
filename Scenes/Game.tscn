@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
-[ext_resource type="PackedScene" uid="uid://c3yxdfot01oax" path="res://Prefabs/Enemy.tscn" id="3_t0kim"]
+[ext_resource type="Script" path="res://Scripts/EnemySpawnManager.gd" id="3_sp687"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwwc3"]
 texture = ExtResource("1_gk4jy")
@@ -12,6 +12,7 @@ texture = ExtResource("1_gk4jy")
 sources/0 = SubResource("TileSetAtlasSource_kwwc3")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("3_sp687")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_e8jtl")
@@ -19,7 +20,3 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-196605, 0, 0, -131069, 0, 0, -65533, 0, 0, 3, 0, 0, 65539, 0, 0, 131075, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_e80ac")]
-
-[node name="Enemy" parent="." instance=ExtResource("3_t0kim")]
-position = Vector2(-116, 61)
-moveSpeed = 50.0
