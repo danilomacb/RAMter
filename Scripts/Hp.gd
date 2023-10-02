@@ -4,13 +4,23 @@ enum HpType {Player, Enemy}
 
 @export var hpType: HpType
 @export var maxHp: float
+@export var invulnerabilityTime: float
 
-var curHp
+@onready var timer = $Timer
+@onready var curHp = maxHp
+
+var canTakeDamage = true
 
 func _ready():
-	curHp = maxHp
+	timer.wait_time = invulnerabilityTime
 
 func TakeDamage(damage):
+	if !canTakeDamage:
+		return
+	
+	canTakeDamage = false
+	timer.start()
+	
 	curHp -= damage
 	
 	if hpType == HpType.Player && curHp <= 0:
@@ -18,3 +28,6 @@ func TakeDamage(damage):
 	
 	if hpType == HpType.Enemy && curHp <= 0:
 		get_parent().queue_free()
+
+func _on_timer_timeout():
+	canTakeDamage = true

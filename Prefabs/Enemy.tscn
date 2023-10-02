@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_8tgep"]
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_dljhi"]
-[ext_resource type="Script" path="res://Scripts/Hp.gd" id="3_x3477"]
+[ext_resource type="PackedScene" uid="uid://bjl316fgcu6oj" path="res://Prefabs/Hp.tscn" id="3_1owpo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35s23"]
 size = Vector2(16, 16)
@@ -24,11 +24,6 @@ texture = ExtResource("1_dljhi")
 position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_35s23")
 
-[node name="Hp" type="Node" parent="."]
-script = ExtResource("3_x3477")
-hpType = 1
-maxHp = 1.0
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 16
 
@@ -36,5 +31,9 @@ collision_mask = 16
 position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_r4riv")
 debug_color = Color(0.984314, 0, 0.329412, 0.419608)
+
+[node name="Hp" parent="." instance=ExtResource("3_1owpo")]
+hpType = 1
+maxHp = 1.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
