@@ -43,8 +43,10 @@ func Shoot():
 		toMouse -= global_position
 		toMouse = toMouse.normalized()
 		
+		instantiatedArrow.direction = toMouse
+		
 		get_tree().root.add_child(instantiatedArrow)
-		instantiatedArrow.add_constant_force(toMouse * 1000)
+#		instantiatedArrow.add_constant_force(toMouse * 1000)
 
 func _on_timer_timeout():
 	canShoot = true
