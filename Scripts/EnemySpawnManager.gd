@@ -11,6 +11,5 @@ func _ready():
 	var pos = Vector2(cameraPos.x, cameraPos.y - height / 2 - 10)
 	var instantiatedEnemy = enemy.instantiate()
 	instantiatedEnemy.global_position = pos
-	instantiatedEnemy.moveSpeed = 100
 	
 	add_child(instantiatedEnemy)
