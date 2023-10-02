@@ -9,6 +9,8 @@ enum HpType {Player, Enemy}
 @onready var timer = $Timer
 @onready var curHp = maxHp
 
+var damageIndicator = load("res://Prefabs/DamageIndicator.tscn")
+
 var canTakeDamage = true
 
 func _ready():
@@ -28,6 +30,10 @@ func TakeDamage(damage):
 	
 	if hpType == HpType.Enemy && curHp <= 0:
 		get_parent().queue_free()
+		
+	var instantiatedDamageIndicator = damageIndicator.instantiate()
+	instantiatedDamageIndicator.global_position = get_parent().global_position
+	get_tree().root.add_child(instantiatedDamageIndicator)
 
 func _on_timer_timeout():
 	canTakeDamage = true

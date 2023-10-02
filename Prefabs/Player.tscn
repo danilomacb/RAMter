@@ -8,7 +8,7 @@
 size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-collision_layer = 20
+collision_layer = 12
 script = ExtResource("1_elqdo")
 moveSpeed = 100.0
 
@@ -25,6 +25,6 @@ shape = SubResource("RectangleShape2D_s27x8")
 
 [node name="Hp" parent="." instance=ExtResource("3_1l1p5")]
 maxHp = 3.0
-invulnerabilityTime = 5.0
+invulnerabilityTime = 2.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
