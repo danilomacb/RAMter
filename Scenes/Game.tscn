@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=9 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawnManager.gd" id="3_sp687"]
 [ext_resource type="Texture2D" uid="uid://dyvlk1rdm71e3" path="res://Sprites/HpBar.png" id="5_7o43d"]
 [ext_resource type="Texture2D" uid="uid://xqw8xchvvif4" path="res://Sprites/HpBarOver.png" id="6_2kjhh"]
+[ext_resource type="Script" path="res://Scripts/UpgradeCard.gd" id="7_qvdpu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwwc3"]
 texture = ExtResource("1_gk4jy")
@@ -28,11 +29,20 @@ script = ExtResource("3_sp687")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HpBar" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 155.0
-offset_bottom = 20.0
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HpBar" type="TextureProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 160.0
+offset_bottom = 25.0
 value = 100.0
 nine_patch_stretch = true
 stretch_margin_left = 3
@@ -46,4 +56,64 @@ tint_under = Color(0.14902, 0, 0, 1)
 tint_over = Color(0.988235, 0.639216, 0.607843, 1)
 tint_progress = Color(0.886275, 0, 0, 1)
 
+[node name="UpgradePanel" type="Panel" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpgradeCard1" type="Button" parent="CanvasLayer/Control/UpgradePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -100.0
+offset_right = -125.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Upgrade 1"
+script = ExtResource("7_qvdpu")
+
+[node name="UpgradeCard2" type="Button" parent="CanvasLayer/Control/UpgradePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Upgrade 2"
+script = ExtResource("7_qvdpu")
+
+[node name="UpgradeCard3" type="Button" parent="CanvasLayer/Control/UpgradePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 125.0
+offset_top = -100.0
+offset_right = 275.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Upgrade 3"
+script = ExtResource("7_qvdpu")
+
 [connection signal="timeout" from="EnemySpawnManager/Timer" to="EnemySpawnManager" method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Control/UpgradePanel/UpgradeCard1" to="CanvasLayer/Control/UpgradePanel/UpgradeCard1" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/UpgradePanel/UpgradeCard2" to="CanvasLayer/Control/UpgradePanel/UpgradeCard2" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/UpgradePanel/UpgradeCard3" to="CanvasLayer/Control/UpgradePanel/UpgradeCard3" method="_on_pressed"]

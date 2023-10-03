@@ -1,5 +1,7 @@
 extends Node
 
+signal OnLevelUp
+
 @export var expIncrementor: int
 
 var expCollected: int
@@ -12,7 +14,9 @@ func AddExp():
 		LevelUp()
 
 func LevelUp():
+	emit_signal("OnLevelUp")
 	expCollected = 0
 	nexLvExp *= 2
 	lv += 1
-	print(lv)
+	print("lv: " + str(lv))
+	get_node("/root/Game/CanvasLayer/Control/UpgradePanel").visible = true

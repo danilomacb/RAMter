@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 @onready var timer = $Timer
 
-var playerArrow = load("res://Prefabs/PlayerArrow.tscn")
+var upgrades = load("res://Scripts/Upgrades.gd").new()
 
 var canShoot = true
 
@@ -33,19 +33,7 @@ func Shoot():
 		canShoot = false
 		timer.start()
 		
-		var toMouse = get_global_mouse_position()
-		
-		var instantiatedArrow = playerArrow.instantiate()
-		instantiatedArrow.global_position = global_position
-		var transformRotated = instantiatedArrow.transform.looking_at(toMouse)
-		instantiatedArrow.transform = transformRotated
-		
-		toMouse -= global_position
-		toMouse = toMouse.normalized()
-		
-		instantiatedArrow.direction = toMouse
-		
-		get_node("/root/Game").add_child(instantiatedArrow)
+		upgrades.InstantiateArrows(global_position, get_node("/root/Game"), get_global_mouse_position())
 
 func _on_timer_timeout():
 	canShoot = true
