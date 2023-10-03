@@ -12,11 +12,12 @@ collision_mask = 2
 script = ExtResource("1_aooo5")
 damage = 1.0
 
-[node name="WhiteSquare" type="Sprite2D" parent="."]
-scale = Vector2(1, 0.1)
-texture = ExtResource("1_iusrv")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_u3b8g")
+
+[node name="WhiteSquare" type="Sprite2D" parent="."]
+modulate = Color(0.447059, 0.121569, 0, 1)
+scale = Vector2(1, 0.1)
+texture = ExtResource("1_iusrv")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

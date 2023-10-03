@@ -1,23 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://vcwf3q5q6m5r"]
+[gd_scene load_steps=6 format=3 uid="uid://vcwf3q5q6m5r"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_elqdo"]
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="2_0ms6c"]
 [ext_resource type="PackedScene" uid="uid://bjl316fgcu6oj" path="res://Prefabs/Hp.tscn" id="3_1l1p5"]
+[ext_resource type="Script" path="res://Scripts/PlayerExp.gd" id="4_8yrjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s27x8"]
 size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-collision_layer = 12
+collision_layer = 44
 script = ExtResource("1_elqdo")
 moveSpeed = 100.0
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(0, -1.43051e-06)
-texture = ExtResource("2_0ms6c")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s27x8")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(0, -1.43051e-06)
+texture = ExtResource("2_0ms6c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -26,5 +28,9 @@ shape = SubResource("RectangleShape2D_s27x8")
 [node name="Hp" parent="." instance=ExtResource("3_1l1p5")]
 maxHp = 3.0
 invulnerabilityTime = 2.0
+
+[node name="PlayerExp" type="Node" parent="."]
+script = ExtResource("4_8yrjw")
+expIncrementor = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

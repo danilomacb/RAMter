@@ -17,7 +17,6 @@ sources/0 = SubResource("TileSetAtlasSource_kwwc3")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_e8jtl")
 format = 2
-layer_0/tile_data = PackedInt32Array(-196605, 0, 0, -131069, 0, 0, -65533, 0, 0, 3, 0, 0, 65539, 0, 0, 131075, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_e80ac")]
 
