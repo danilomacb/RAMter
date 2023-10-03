@@ -17,3 +17,4 @@ func RandomizeUpgradeCard():
 func _on_pressed():
 	upgrades.AddUpgrade(currentUpgradeIndex)
 	get_parent().visible = false
+	get_tree().paused = false

@@ -28,6 +28,7 @@ script = ExtResource("3_sp687")
 [node name="Timer" type="Timer" parent="EnemySpawnManager"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3

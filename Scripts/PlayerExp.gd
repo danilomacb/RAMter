@@ -20,3 +20,4 @@ func LevelUp():
 	lv += 1
 	print("lv: " + str(lv))
 	get_node("/root/Game/CanvasLayer/Control/UpgradePanel").visible = true
+	get_tree().paused = true
