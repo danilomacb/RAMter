@@ -30,6 +30,10 @@ func TakeDamage(damage):
 	instantiatedDamageIndicator.global_position = get_parent().global_position
 	get_tree().root.add_child(instantiatedDamageIndicator)
 	
+	if hpType == HpType.Player:
+		var hpBar = get_node("/root/Game/CanvasLayer/HpBar") as TextureProgressBar
+		hpBar.value = (curHp / maxHp) * 100
+	
 	if curHp <= 0:
 		Death()
 

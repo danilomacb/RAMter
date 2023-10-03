@@ -26,8 +26,8 @@ texture = ExtResource("2_0ms6c")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Hp" parent="." instance=ExtResource("3_1l1p5")]
-maxHp = 3.0
-invulnerabilityTime = 2.0
+maxHp = 5.0
+invulnerabilityTime = 1.0
 
 [node name="PlayerExp" type="Node" parent="."]
 script = ExtResource("4_8yrjw")

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=9 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawnManager.gd" id="3_sp687"]
 [ext_resource type="PackedScene" uid="uid://c3yxdfot01oax" path="res://Prefabs/Enemy.tscn" id="4_8du3v"]
+[ext_resource type="Texture2D" uid="uid://dyvlk1rdm71e3" path="res://Sprites/HpBar.png" id="5_7o43d"]
+[ext_resource type="Texture2D" uid="uid://xqw8xchvvif4" path="res://Sprites/HpBarOver.png" id="6_2kjhh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwwc3"]
 texture = ExtResource("1_gk4jy")
@@ -27,5 +29,25 @@ script = ExtResource("3_sp687")
 
 [node name="Enemy" parent="." instance=ExtResource("4_8du3v")]
 position = Vector2(8, -207)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HpBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 155.0
+offset_bottom = 20.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("5_7o43d")
+texture_over = ExtResource("6_2kjhh")
+texture_progress = ExtResource("5_7o43d")
+tint_under = Color(0.14902, 0, 0, 1)
+tint_over = Color(0.988235, 0.639216, 0.607843, 1)
+tint_progress = Color(0.886275, 0, 0, 1)
 
 [connection signal="timeout" from="Node/Timer" to="Node" method="_on_timer_timeout"]
