@@ -45,7 +45,7 @@ func Shoot():
 		
 		instantiatedArrow.direction = toMouse
 		
-		get_tree().root.add_child(instantiatedArrow)
+		get_node("/root/Game").add_child(instantiatedArrow)
 
 func _on_timer_timeout():
 	canShoot = true

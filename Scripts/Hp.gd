@@ -44,7 +44,7 @@ func Death():
 	if hpType == HpType.Enemy:
 		var instantiatedExp = exp.instantiate()
 		instantiatedExp.global_position = get_parent().global_position
-		get_tree().root.add_child(instantiatedExp)
+		get_node("/root/Game").add_child(instantiatedExp)
 		get_parent().queue_free()
 
 func _on_timer_timeout():

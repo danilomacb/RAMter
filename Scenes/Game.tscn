@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=8 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawnManager.gd" id="3_sp687"]
-[ext_resource type="PackedScene" uid="uid://c3yxdfot01oax" path="res://Prefabs/Enemy.tscn" id="4_8du3v"]
 [ext_resource type="Texture2D" uid="uid://dyvlk1rdm71e3" path="res://Sprites/HpBar.png" id="5_7o43d"]
 [ext_resource type="Texture2D" uid="uid://xqw8xchvvif4" path="res://Sprites/HpBarOver.png" id="6_2kjhh"]
 
@@ -22,13 +21,10 @@ format = 2
 
 [node name="Player" parent="." instance=ExtResource("2_e80ac")]
 
-[node name="Node" type="Node" parent="."]
+[node name="EnemySpawnManager" type="Node" parent="."]
 script = ExtResource("3_sp687")
 
-[node name="Timer" type="Timer" parent="Node"]
-
-[node name="Enemy" parent="." instance=ExtResource("4_8du3v")]
-position = Vector2(8, -207)
+[node name="Timer" type="Timer" parent="EnemySpawnManager"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -50,4 +46,4 @@ tint_under = Color(0.14902, 0, 0, 1)
 tint_over = Color(0.988235, 0.639216, 0.607843, 1)
 tint_progress = Color(0.886275, 0, 0, 1)
 
-[connection signal="timeout" from="Node/Timer" to="Node" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemySpawnManager/Timer" to="EnemySpawnManager" method="_on_timer_timeout"]
