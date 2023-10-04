@@ -1,10 +1,9 @@
 extends CharacterBody2D
 
 @export var moveSpeed: float
-
-@onready var timer = $Timer as Timer
-@onready var animatedSprite2d = $AnimatedSprite2D as AnimatedSprite2D
-@onready var bow = $Bow as AnimatedSprite2D
+@export var timer: Timer
+@export var animatedSprite2d: AnimatedSprite2D
+@export var bow: AnimatedSprite2D
 
 var upgrades = load("res://Scripts/Upgrades.gd").new()
 
@@ -43,7 +42,6 @@ func Shoot():
 
 func _on_timer_timeout():
 	canShoot = true
-
 
 func _on_bow_animation_finished():
 	bow.play("Idle")
