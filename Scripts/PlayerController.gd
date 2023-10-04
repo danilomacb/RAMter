@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @onready var timer = $Timer as Timer
 @onready var animatedSprite2d = $AnimatedSprite2D as AnimatedSprite2D
+@onready var bow = $Bow as AnimatedSprite2D
 
 var upgrades = load("res://Scripts/Upgrades.gd").new()
 
@@ -38,6 +39,11 @@ func Shoot():
 		timer.start()
 		
 		upgrades.InstantiateArrows(global_position, get_node("/root/Game"), get_global_mouse_position())
+		bow.play("Shoot")
 
 func _on_timer_timeout():
 	canShoot = true
+
+
+func _on_bow_animation_finished():
+	bow.play("Idle")

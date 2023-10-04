@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dliilkib5osm8"
-path="res://.godot/imported/Bow.png-2e372c0098797d6106e6e3767417e1ac.ctex"
+uid="uid://ubxkgtq7mjn"
+path="res://.godot/imported/BowShoot.png-c44aebe191463483f8110c4c074565cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bow.png"
-dest_files=["res://.godot/imported/Bow.png-2e372c0098797d6106e6e3767417e1ac.ctex"]
+source_file="res://Sprites/Player/BowShoot.png"
+dest_files=["res://.godot/imported/BowShoot.png-c44aebe191463483f8110c4c074565cf.ctex"]
 
 [params]
 
