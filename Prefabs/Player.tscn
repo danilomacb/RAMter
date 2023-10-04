@@ -1,29 +1,88 @@
-[gd_scene load_steps=6 format=3 uid="uid://vcwf3q5q6m5r"]
+[gd_scene load_steps=14 format=3 uid="uid://vcwf3q5q6m5r"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_elqdo"]
-[ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="2_0ms6c"]
+[ext_resource type="Texture2D" uid="uid://piftsefupt5f" path="res://Sprites/Player/PlayerIdle.png" id="2_atcc7"]
 [ext_resource type="PackedScene" uid="uid://bjl316fgcu6oj" path="res://Prefabs/Hp.tscn" id="3_1l1p5"]
+[ext_resource type="Texture2D" uid="uid://dliilkib5osm8" path="res://Sprites/Bow.png" id="3_1p885"]
+[ext_resource type="Texture2D" uid="uid://dq0j3c5r4p7nx" path="res://Sprites/Player/PlayerWalk.png" id="3_ltvof"]
 [ext_resource type="Script" path="res://Scripts/PlayerExp.gd" id="4_8yrjw"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_inay3"]
+atlas = ExtResource("3_ltvof")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rslaa"]
+atlas = ExtResource("3_ltvof")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inhld"]
+atlas = ExtResource("3_ltvof")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br6fk"]
+atlas = ExtResource("3_ltvof")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcwuf"]
+atlas = ExtResource("3_ltvof")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pvucm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_atcc7")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inay3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rslaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inhld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br6fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcwuf")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 15.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s27x8"]
-size = Vector2(16, 16)
+size = Vector2(8, 16)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 44
 script = ExtResource("1_elqdo")
 moveSpeed = 100.0
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pvucm")
+animation = &"Walk"
+autoplay = "Idle"
+frame_progress = 0.0623673
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s27x8")
-
-[node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(0, -1.43051e-06)
-texture = ExtResource("2_0ms6c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Bow" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(5, 2)
+texture = ExtResource("3_1p885")
 
 [node name="Hp" parent="." instance=ExtResource("3_1l1p5")]
 maxHp = 5.0
