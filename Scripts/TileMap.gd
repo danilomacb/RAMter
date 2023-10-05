@@ -49,7 +49,7 @@ func SetTilesHorizontally(firsTileCoord):
 		
 		var tile = get_cell_tile_data(0, tileCoord, false)
 		if !tile:
-			set_cell(0, tileCoord, 1, Vector2i.ZERO, 0)
+			set_cell(0, tileCoord, 1, GetRandomTileId(), 0)
 
 func GenerateTilesRight(playerPos):
 	var playerPosDifX = playerPos.x - oldPlayerPos.x
@@ -71,4 +71,18 @@ func SetTilesVertically(firsTileCoord):
 		
 		var tile = get_cell_tile_data(0, tileCoord, false)
 		if !tile:
-			set_cell(0, tileCoord, 1, Vector2i.ZERO, 0)
+			set_cell(0, tileCoord, 1, GetRandomTileId(), 0)
+
+func GetRandomTileId():
+	var rng = RandomNumberGenerator.new()
+	
+	var random = rng.randi_range(0, 99)
+	
+	if random <= 96:
+		return Vector2(0, 0)
+	elif random <= 97:
+		return Vector2(0, 1)
+	elif random <= 98:
+		return Vector2(1, 0)
+		
+	return Vector2(1, 1)
