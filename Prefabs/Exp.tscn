@@ -1,19 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://jj5ecfa4mxg8"]
 
 [ext_resource type="Script" path="res://Scripts/Exp.gd" id="1_7qvws"]
-[ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="2_605df"]
+[ext_resource type="Texture2D" uid="uid://cf3hklspptw2g" path="res://Sprites/Exp.png" id="2_ll7dw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3edv8"]
-size = Vector2(16, 16)
+size = Vector2(10, 11.5)
 
 [node name="Exp" type="Area2D" groups=["Exps"]]
-scale = Vector2(0.2, 0.2)
 collision_mask = 32
 script = ExtResource("1_7qvws")
 
 [node name="WhiteSquare" type="Sprite2D" parent="."]
-modulate = Color(0.219608, 0.447059, 1, 1)
-texture = ExtResource("2_605df")
+texture = ExtResource("2_ll7dw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3edv8")
