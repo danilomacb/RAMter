@@ -65,3 +65,4 @@ Shoot={
 
 textures/canvas_textures/default_texture_filter=0
 textures/lossless_compression/force_png=true
+environment/defaults/default_clear_color=Color(0.223529, 0.341176, 0.109804, 1)
