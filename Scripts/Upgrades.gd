@@ -1,6 +1,6 @@
 extends Node2D
 
-enum UpgradeType {Multishot, ReverseShot, Penetrator}
+enum UpgradeType {AttackSpeed, Multishot, ReverseShot, Penetrator}
 
 var playerArrow = load("res://Prefabs/PlayerArrow.tscn")
 
@@ -33,3 +33,5 @@ func AddUpgrade(upgradeType):
 			Globals.UpgradeReverseShotCounter += 1
 		UpgradeType.Penetrator:
 			Globals.UpgradePenetratorCounter += 1
+		UpgradeType.AttackSpeed:
+			Globals.UpgradeAttackSpeedCounter += 1

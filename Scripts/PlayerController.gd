@@ -35,6 +35,12 @@ func Move():
 func Shoot():
 	if Input.is_action_pressed("Shoot") && canShoot:
 		canShoot = false
+		
+		timer.wait_time = 1 - Globals.UpgradeAttackSpeedCounter * 0.1
+		
+		if timer.wait_time < 0.1:
+			timer.wait_time = 0.1
+		
 		timer.start()
 		
 		upgrades.InstantiateArrows(global_position, bow.global_position, get_node("/root/Game"), get_global_mouse_position())
