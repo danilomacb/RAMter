@@ -37,7 +37,7 @@ func Shoot():
 		canShoot = false
 		timer.start()
 		
-		upgrades.InstantiateArrows(bow.global_position, get_node("/root/Game"), get_global_mouse_position())
+		upgrades.InstantiateArrows(global_position, bow.global_position, get_node("/root/Game"), get_global_mouse_position())
 		bow.play("Shoot")
 
 func _on_timer_timeout():

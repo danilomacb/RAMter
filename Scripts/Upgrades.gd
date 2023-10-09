@@ -6,12 +6,12 @@ var playerArrow = load("res://Prefabs/PlayerArrow.tscn")
 
 var radius := 10.0
 
-func InstantiateArrows(bowPos, game, mousePos):
+func InstantiateArrows(playerPos, bowPos, game, mousePos):
 	var instantiatedArrow = playerArrow.instantiate()
 
-	radius = bowPos.distance_to(mousePos)
+	radius = playerPos.distance_to(mousePos)
 	
-	var angle = atan2(mousePos.y - bowPos.y, mousePos.x - bowPos.x)
+	var angle = atan2(mousePos.y - playerPos.y, mousePos.x - playerPos.x)
 	instantiatedArrow.direction = Vector2(cos(angle), sin(angle))
 	instantiatedArrow.rotation = angle
 	instantiatedArrow.global_position = bowPos
