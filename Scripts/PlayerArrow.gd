@@ -35,7 +35,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 		if global_position.y < camera.global_position.y - height || global_position.y > camera.global_position.y + height:
 			direction = Vector2(direction.x, direction.y * -1)
 		
-		var newRotation = atan2(direction.y, direction.x)
-		rotation = newRotation
+		rotation = atan2(direction.y, direction.x)
 		
 		reflectorCounter -= 1
