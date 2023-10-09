@@ -4,18 +4,17 @@ enum UpgradeType {Multishot, ReverseShot}
 
 var playerArrow = load("res://Prefabs/PlayerArrow.tscn")
 
-func InstantiateArrows(playerPos, game, mousePos):
-	var toMouse = mousePos
-		
+var radius := 10.0
+
+func InstantiateArrows(bowPos, game, mousePos):
 	var instantiatedArrow = playerArrow.instantiate()
-	instantiatedArrow.global_position = playerPos
-	var transformRotated = instantiatedArrow.transform.looking_at(toMouse)
-	instantiatedArrow.transform = transformRotated
+
+	radius = bowPos.distance_to(mousePos)
 	
-	toMouse -= playerPos
-	toMouse = toMouse.normalized()
-	
-	instantiatedArrow.direction = toMouse
+	var angle = atan2(mousePos.y - bowPos.y, mousePos.x - bowPos.x)
+	instantiatedArrow.direction = Vector2(cos(angle), sin(angle))
+	instantiatedArrow.rotation = angle
+	instantiatedArrow.global_position = bowPos
 	
 	game.add_child(instantiatedArrow)
 
