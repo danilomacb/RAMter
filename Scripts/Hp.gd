@@ -39,6 +39,11 @@ func TakeDamage(damage):
 
 func Death():
 	if hpType == HpType.Player:
+		Globals.UpgradeAttackSpeedCounter = 0
+		Globals.UpgradeMultiShotCounter = 0
+		Globals.UpgradeReverseShotCounter = 0
+		Globals.UpgradePenetratorCounter = 0
+		Globals.UpgradeReflectorCounter = 0
 		get_tree().reload_current_scene()
 	
 	if hpType == HpType.Enemy:
