@@ -4,19 +4,20 @@ enum UpgradeType {Multishot, ReverseShot}
 
 var playerArrow = load("res://Prefabs/PlayerArrow.tscn")
 
-var radius := 10.0
-
 func InstantiateArrows(playerPos, bowPos, game, mousePos):
-	var instantiatedArrow = playerArrow.instantiate()
+	var base_angle_diff = PI/12
+	
+	for i in range(Globals.UpgradeMultiShotCounter + 1):
+		var instantiatedArrow = playerArrow.instantiate()
 
-	radius = playerPos.distance_to(mousePos)
-	
-	var angle = atan2(mousePos.y - playerPos.y, mousePos.x - playerPos.x)
-	instantiatedArrow.direction = Vector2(cos(angle), sin(angle))
-	instantiatedArrow.rotation = angle
-	instantiatedArrow.global_position = bowPos
-	
-	game.add_child(instantiatedArrow)
+		var angle = atan2(mousePos.y - playerPos.y, mousePos.x - playerPos.x)
+		var angleDif = base_angle_diff * (i - Globals.UpgradeMultiShotCounter / 2)
+
+		instantiatedArrow.direction = Vector2(cos(angle + angleDif), sin(angle + angleDif))
+		instantiatedArrow.rotation = angle + angleDif
+		instantiatedArrow.global_position = bowPos
+
+		game.add_child(instantiatedArrow)
 
 func AddUpgrade(upgradeType):
 	match (upgradeType):
