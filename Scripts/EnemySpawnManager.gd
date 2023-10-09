@@ -9,7 +9,7 @@ var width = ProjectSettings.get_setting("display/window/size/viewport_width")
 var height = ProjectSettings.get_setting("display/window/size/viewport_height")
 
 var rng = RandomNumberGenerator.new()
-var canSpawnEnemy = true
+var canSpawnEnemy = false
 
 const margin = 5
 
