@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 @export var moveSpeed: float
 @export var animatedSprite2D: AnimatedSprite2D
+@export var timer: Timer
+
+var collidingWithPlayer: bool = false
+var playerBody: CharacterBody2D
 
 func _physics_process(delta):
 	var playerPos = get_node("/root/Game/Player").global_position
@@ -12,6 +16,20 @@ func _physics_process(delta):
 	else:
 		animatedSprite2D.flip_h = true
 
+func DamagePlayer():
+	timer.start()
+	playerBody.hp.TakeDamage(1)
+
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
-		body.get_node("Hp").TakeDamage(1)
+		collidingWithPlayer = true
+		playerBody = body
+		DamagePlayer()
+
+func _on_area_2d_body_exited(body):
+	if body.is_in_group("Player"):
+		collidingWithPlayer = false
+
+func _on_timer_timeout():
+	if collidingWithPlayer:
+		DamagePlayer()

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var timer: Timer
 @export var animatedSprite2d: AnimatedSprite2D
 @export var bow: AnimatedSprite2D
+@export var hp: Hp
 
 var upgrades = load("res://Scripts/Upgrades.gd").new()
 

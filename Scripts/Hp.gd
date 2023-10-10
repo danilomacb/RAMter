@@ -1,4 +1,4 @@
-extends Node
+class_name Hp extends Node
 
 enum HpType {Player, Enemy}
 
