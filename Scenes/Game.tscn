@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=13 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dyvlk1rdm71e3" path="res://Sprites/HpBar.png" id="5_7o43d"]
 [ext_resource type="Texture2D" uid="uid://xqw8xchvvif4" path="res://Sprites/HpBarOver.png" id="6_2kjhh"]
 [ext_resource type="Script" path="res://Scripts/UpgradeCard.gd" id="7_qvdpu"]
+[ext_resource type="PackedScene" uid="uid://degaswqbjmvr5" path="res://Prefabs/Tiilibra.tscn" id="9_pi7ia"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwwc3"]
 texture = ExtResource("1_gk4jy")
@@ -126,6 +127,9 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Upgrade 3"
 script = ExtResource("7_qvdpu")
+
+[node name="Tiilibra" parent="." instance=ExtResource("9_pi7ia")]
+position = Vector2(-134, -9)
 
 [connection signal="timeout" from="EnemySpawnManager/Timer" to="EnemySpawnManager" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Control/UpgradePanel/UpgradeCard1" to="CanvasLayer/Control/UpgradePanel/UpgradeCard1" method="_on_pressed"]

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var moveSpeed: float
+@export var flip: bool
 @export var animatedSprite2D: AnimatedSprite2D
 @export var timer: Timer
 
@@ -11,9 +12,9 @@ func _physics_process(delta):
 	var playerPos = get_node("/root/Game/Player").global_position
 	global_position = global_position.move_toward(playerPos, delta * moveSpeed)
 	
-	if playerPos.x > global_position.x:
+	if flip && playerPos.x >= global_position.x:
 		animatedSprite2D.flip_h = false
-	else:
+	if flip && playerPos.x < global_position.x:
 		animatedSprite2D.flip_h = true
 
 func DamagePlayer():
