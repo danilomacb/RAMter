@@ -10,9 +10,17 @@ var collidingWithPlayer: bool = false
 var playerBody: CharacterBody2D
 
 func _physics_process(delta):
-	var playerPos = get_node("/root/Game/Player").global_position
-	global_position = global_position.move_toward(playerPos, delta * moveSpeed)
+	Move()
+
+func Move():
+	var playerPos: Vector2 = get_node("/root/Game/Player").global_position
+	var direction = (playerPos - global_position).normalized()
+	velocity = direction * moveSpeed
+	move_and_slide()
 	
+	Flip(playerPos)
+	
+func Flip(playerPos):
 	if flip && playerPos.x >= global_position.x:
 		animatedSprite2D.flip_h = false
 	if flip && playerPos.x < global_position.x:
