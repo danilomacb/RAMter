@@ -10,21 +10,28 @@ var width = ProjectSettings.get_setting("display/window/size/viewport_width")
 var height = ProjectSettings.get_setting("display/window/size/viewport_height")
 
 var rng = RandomNumberGenerator.new()
-var canSpawnEnemy = true
+var canSpawnEnemy: bool = true
 var time: float = 0.0
 
 const margin = 5
 
+func _ready():
+	SpawnEnemys()
+
 func _process(delta):
 	time += delta
-	
-	SpawnEnemys()
 
 func SpawnEnemys():
 	if !canSpawnEnemy:
 		return
 	
 	canSpawnEnemy = false
+	timer.wait_time = 1 - (time / 10) * 0.1
+	
+	if timer.wait_time < 0.1:
+		timer.wait_time = 0.1
+	
+	print(timer.wait_time)
 	timer.start()
 	
 	var instantiatedEnemy = GetRandomEnemy().instantiate()
@@ -55,7 +62,6 @@ func GetRandomEnemy() -> PackedScene:
 	var randomEnemyIndex = rng.randi_range(0, 99)
 	
 	var skeletonChance = 94 - int(time / 2)
-	print(skeletonChance)
 	
 	if randomEnemyIndex < skeletonChance:
 		return enemys[0]
@@ -64,3 +70,4 @@ func GetRandomEnemy() -> PackedScene:
 
 func _on_timer_timeout():
 	canSpawnEnemy = true
+	SpawnEnemys()

@@ -8,7 +8,7 @@
 size = Vector2(17, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4riv"]
-size = Vector2(17, 23)
+size = Vector2(19, 25)
 
 [sub_resource type="Animation" id="Animation_wxkpo"]
 resource_name = "Move"

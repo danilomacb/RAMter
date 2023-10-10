@@ -110,7 +110,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("timer", "animatedSprite2d", "bow", "hp") groups=["Player"]]
 collision_layer = 44
 script = ExtResource("1_elqdo")
-moveSpeed = 100.0
+moveSpeed = 90.0
 timer = NodePath("Timer")
 animatedSprite2d = NodePath("AnimatedSprite2D")
 bow = NodePath("Bow")
