@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5xrktt6gp603"
-path="res://.godot/imported/EsqueletoDeSacola.png-18775dc2fcf172833627bf50e8d4f504.ctex"
+uid="uid://5l333m8tcxne"
+path="res://.godot/imported/gameOver.png-87963def62d58891253cf66189e10fd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/EsqueletoDeSacola.png"
-dest_files=["res://.godot/imported/EsqueletoDeSacola.png-18775dc2fcf172833627bf50e8d4f504.ctex"]
+source_file="res://Sprites/gameOver.png"
+dest_files=["res://.godot/imported/gameOver.png-87963def62d58891253cf66189e10fd8.ctex"]
 
 [params]
 
