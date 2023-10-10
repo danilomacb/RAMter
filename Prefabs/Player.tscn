@@ -138,7 +138,7 @@ autoplay = "Idle"
 script = ExtResource("8_xbqv5")
 
 [node name="Hp" parent="." instance=ExtResource("3_1l1p5")]
-maxHp = 5.0
+maxHp = 10.0
 invulnerabilityTime = 1.0
 
 [node name="PlayerExp" type="Node" parent="."]
