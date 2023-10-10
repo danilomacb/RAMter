@@ -35,8 +35,9 @@ player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_e80ac")]
 
-[node name="EnemySpawnManager" type="Node" parent="."]
+[node name="EnemySpawnManager" type="Node" parent="." node_paths=PackedStringArray("timer")]
 script = ExtResource("3_sp687")
+timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="EnemySpawnManager"]
 
