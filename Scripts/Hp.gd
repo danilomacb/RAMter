@@ -22,7 +22,7 @@ func _ready():
 	timer.wait_time = invulnerabilityTime
 
 func TakeDamage(damage):
-	if !canTakeDamage:
+	if !canTakeDamage && hpType == HpType.Player:
 		return
 	
 	canTakeDamage = false
