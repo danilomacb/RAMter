@@ -9,6 +9,7 @@ enum HpType {Player, Enemy}
 @onready var timer = $Timer
 @onready var curHp = maxHp
 @onready var game = get_node("/root/Game")
+@onready var gameOverPanel = get_node("/root/Game/CanvasLayer/Control/GameOverPanel")
 
 var damageIndicator: PackedScene = load("res://Prefabs/DamageIndicator.tscn")
 var exp: PackedScene = load("res://Prefabs/Exp.tscn")
@@ -19,6 +20,8 @@ var rng = RandomNumberGenerator.new()
 var canTakeDamage = true
 
 func _ready():
+	get_tree().paused = false
+	
 	timer.wait_time = invulnerabilityTime
 
 func TakeDamage(damage):
@@ -50,7 +53,8 @@ func Death():
 		Globals.UpgradePenetratorCounter = 0
 		Globals.UpgradeReflectorCounter = 0
 		Globals.UpgradeDeathArrowCounter = 0
-		get_tree().reload_current_scene()
+		get_tree().paused = true
+		gameOverPanel.visible = true
 	
 	if hpType == HpType.Enemy:
 		var instantiatedExp = exp.instantiate()

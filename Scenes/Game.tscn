@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=13 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dyvlk1rdm71e3" path="res://Sprites/HpBar.png" id="5_7o43d"]
 [ext_resource type="Texture2D" uid="uid://xqw8xchvvif4" path="res://Sprites/HpBarOver.png" id="6_2kjhh"]
 [ext_resource type="Script" path="res://Scripts/UpgradeCard.gd" id="7_qvdpu"]
+[ext_resource type="Script" path="res://Scripts/PlayAgainButton.gd" id="9_5dn3i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwwc3"]
 texture = ExtResource("1_gk4jy")
@@ -128,7 +129,48 @@ grow_vertical = 2
 text = "Upgrade 3"
 script = ExtResource("7_qvdpu")
 
+[node name="GameOverPanel" type="Panel" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -114.0
+offset_top = 40.0
+offset_right = 114.0
+offset_bottom = 98.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/Control/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.5
+offset_top = -71.0
+offset_right = 50.5
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "PLAY AGAIN"
+script = ExtResource("9_5dn3i")
+
 [connection signal="timeout" from="EnemySpawnManager/Timer" to="EnemySpawnManager" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Control/UpgradePanel/UpgradeCard1" to="CanvasLayer/Control/UpgradePanel/UpgradeCard1" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/UpgradePanel/UpgradeCard2" to="CanvasLayer/Control/UpgradePanel/UpgradeCard2" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/UpgradePanel/UpgradeCard3" to="CanvasLayer/Control/UpgradePanel/UpgradeCard3" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/GameOverPanel/PlayAgainButton" to="CanvasLayer/Control/GameOverPanel/PlayAgainButton" method="_on_pressed"]
