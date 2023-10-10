@@ -55,6 +55,7 @@ script = ExtResource("1_5o8ic")
 moveSpeed = 50.0
 animatedSprite2D = NodePath("")
 timer = NodePath("Timer")
+damage = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_dpwsf")

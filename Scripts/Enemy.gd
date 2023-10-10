@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var flip: bool
 @export var animatedSprite2D: AnimatedSprite2D
 @export var timer: Timer
+@export var damage: int
 
 var collidingWithPlayer: bool = false
 var playerBody: CharacterBody2D
@@ -19,7 +20,7 @@ func _physics_process(delta):
 
 func DamagePlayer():
 	timer.start()
-	playerBody.hp.TakeDamage(1)
+	playerBody.hp.TakeDamage(damage)
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):

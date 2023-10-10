@@ -31,6 +31,7 @@ func TakeDamage(damage):
 	curHp -= damage
 		
 	var instantiatedDamageIndicator = damageIndicator.instantiate()
+	instantiatedDamageIndicator.label.text = str(damage)
 	instantiatedDamageIndicator.global_position = get_parent().global_position
 	get_tree().root.add_child(instantiatedDamageIndicator)
 	

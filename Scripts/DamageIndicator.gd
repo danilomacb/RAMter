@@ -2,8 +2,7 @@ extends Node2D
 
 @export var speed: int = 30
 @export var friction: int = 15
-
-@onready var label = $Label
+@export var label: Label
 
 var shiftDirection: Vector2 = Vector2.ZERO
 var rng = RandomNumberGenerator.new()

@@ -76,15 +76,18 @@ _data = {
 "ShowDamage": SubResource("Animation_xoryf")
 }
 
-[node name="DamageIndicator" type="Node2D"]
+[node name="DamageIndicator" type="Node2D" node_paths=PackedStringArray("label")]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_wvk3y")
+label = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.235294, 0.180392, 1)
 text = "1"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "ShowDamage"

@@ -61,6 +61,7 @@ moveSpeed = 50.0
 flip = true
 animatedSprite2D = NodePath("AnimatedSprite2D")
 timer = NodePath("Timer")
+damage = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qwq2m")
