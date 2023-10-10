@@ -31,7 +31,6 @@ func SpawnEnemys():
 	if timer.wait_time < 0.1:
 		timer.wait_time = 0.1
 	
-	print(timer.wait_time)
 	timer.start()
 	
 	var instantiatedEnemy = GetRandomEnemy().instantiate()
@@ -62,6 +61,9 @@ func GetRandomEnemy() -> PackedScene:
 	var randomEnemyIndex = rng.randi_range(0, 99)
 	
 	var skeletonChance = 94 - int(time / 2)
+	
+	if skeletonChance < 5:
+		skeletonChance = 5
 	
 	if randomEnemyIndex < skeletonChance:
 		return enemys[0]
