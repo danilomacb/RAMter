@@ -34,7 +34,7 @@ func Move():
 	move_and_slide()
 
 func Shoot():
-	if Input.is_action_pressed("Shoot") && canShoot:
+	if canShoot:
 		canShoot = false
 		
 		timer.wait_time = 1 - Globals.UpgradeAttackSpeedCounter * 0.1
