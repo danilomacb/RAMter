@@ -49,6 +49,7 @@ func Death():
 		Globals.UpgradeReverseShotCounter = 0
 		Globals.UpgradePenetratorCounter = 0
 		Globals.UpgradeReflectorCounter = 0
+		Globals.UpgradeDeathArrowCounter = 0
 		get_tree().reload_current_scene()
 	
 	if hpType == HpType.Enemy:
