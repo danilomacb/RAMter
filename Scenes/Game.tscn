@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=14 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://xqw8xchvvif4" path="res://Sprites/HpBarOver.png" id="6_2kjhh"]
 [ext_resource type="Script" path="res://Scripts/UpgradeCard.gd" id="7_qvdpu"]
 [ext_resource type="Script" path="res://Scripts/PlayAgainButton.gd" id="9_5dn3i"]
+[ext_resource type="Texture2D" uid="uid://5xrktt6gp603" path="res://Sprites/EsqueletoDeSacola.png" id="9_uirqs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwwc3"]
 texture = ExtResource("1_gk4jy")
@@ -138,6 +139,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 960.0
+offset_bottom = 538.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_uirqs")
+
 [node name="Label" type="Label" parent="CanvasLayer/Control/GameOverPanel"]
 layout_mode = 1
 anchors_preset = 5
@@ -148,6 +165,7 @@ offset_top = 40.0
 offset_right = 114.0
 offset_bottom = 98.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "GAME OVER"
 horizontal_alignment = 1
