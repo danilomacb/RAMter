@@ -30,7 +30,6 @@ func TakeDamage(damage):
 	
 	if hpType == HpType.Player:
 		hpBar.value = (curHp / maxHp) * 100
-		print(instantiatedDamageIndicator.label)
 		instantiatedDamageIndicator.label.modulate = Color("9b1a0a")
 	
 	get_tree().root.add_child(instantiatedDamageIndicator)

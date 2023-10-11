@@ -107,11 +107,14 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("timer", "animatedSprite2d", "bow", "hp") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootTimer", "dashTimer", "dashCooldownTimer", "animatedSprite2d", "bow", "hp") groups=["Player"]]
 collision_layer = 44
 script = ExtResource("1_elqdo")
 moveSpeed = 90.0
-timer = NodePath("Timer")
+dashSpeed = 500.0
+shootTimer = NodePath("ShootTimer")
+dashTimer = NodePath("DashTimer")
+dashCooldownTimer = NodePath("DashCooldownTimer")
 animatedSprite2d = NodePath("AnimatedSprite2D")
 bow = NodePath("Bow")
 hp = NodePath("Hp")
@@ -128,7 +131,12 @@ shape = SubResource("RectangleShape2D_s27x8")
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="DashCooldownTimer" type="Timer" parent="."]
 
 [node name="Bow" type="AnimatedSprite2D" parent="."]
 position = Vector2(5, 2)
@@ -144,5 +152,7 @@ invulnerabilityTime = 1.0
 [node name="PlayerExp" type="Node" parent="."]
 script = ExtResource("4_8yrjw")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="animation_finished" from="Bow" to="." method="_on_bow_animation_finished"]

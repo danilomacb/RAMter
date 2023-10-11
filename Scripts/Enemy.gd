@@ -10,13 +10,13 @@ var collidingWithPlayer: bool = false
 var playerBody: CharacterBody2D
 
 func _physics_process(delta):
-	Move()
+	Move(delta)
 
-func Move():
+func Move(delta):
 	var playerPos: Vector2 = get_node("/root/Game/Player").global_position
 	var direction = (playerPos - global_position).normalized()
 	velocity = direction * moveSpeed
-	move_and_slide()
+	move_and_collide(velocity * delta)
 	
 	Flip(playerPos)
 	
