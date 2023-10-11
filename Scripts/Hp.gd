@@ -5,11 +5,12 @@ enum HpType {Player, Enemy}
 @export var hpType: HpType
 @export var maxHp: float
 @export var invulnerabilityTime: float
+@export var timer: Timer
 
-@onready var timer = $Timer
 @onready var curHp = maxHp
 @onready var game = get_node("/root/Game")
 @onready var gameOverPanel = get_node("/root/Game/CanvasLayer/Control/GameOverPanel")
+@onready var hpBar: TextureProgressBar = get_node("/root/Game/CanvasLayer/Control/HpBar")
 
 var damageIndicator: PackedScene = load("res://Prefabs/DamageIndicator.tscn")
 var exp: PackedScene = load("res://Prefabs/Exp.tscn")
@@ -39,7 +40,6 @@ func TakeDamage(damage):
 	get_tree().root.add_child(instantiatedDamageIndicator)
 	
 	if hpType == HpType.Player:
-		var hpBar = get_node("/root/Game/CanvasLayer/Control/HpBar") as TextureProgressBar
 		hpBar.value = (curHp / maxHp) * 100
 	
 	if curHp <= 0:

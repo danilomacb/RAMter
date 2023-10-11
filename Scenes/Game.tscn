@@ -74,6 +74,30 @@ tint_under = Color(0.14902, 0, 0, 1)
 tint_over = Color(0.988235, 0.639216, 0.607843, 1)
 tint_progress = Color(0.886275, 0, 0, 1)
 
+[node name="ExpBar" type="TextureProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -11.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("5_7o43d")
+texture_over = ExtResource("6_2kjhh")
+texture_progress = ExtResource("5_7o43d")
+tint_under = Color(0.121569, 0.141176, 0.0392157, 1)
+tint_over = Color(0.937255, 0.847059, 0.631373, 1)
+tint_progress = Color(0.937255, 0.67451, 0.156863, 1)
+
 [node name="UpgradePanel" type="Panel" parent="CanvasLayer/Control"]
 visible = false
 layout_mode = 1

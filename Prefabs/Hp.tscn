@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/Hp.gd" id="1_4wkjy"]
 
-[node name="Hp" type="Node"]
+[node name="Hp" type="Node" node_paths=PackedStringArray("timer")]
 script = ExtResource("1_4wkjy")
+timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="."]
 
