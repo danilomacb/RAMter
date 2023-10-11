@@ -18,9 +18,16 @@ func _ready():
 
 func RandomizeUpgradeCard():
 	currentUpgradeIndex = rng.randi_range(0, cardResources.size() - 1)
+	
+	for i in Globals.InstantiatedCardsIndexes.size() - 1:
+		if Globals.InstantiatedCardsIndexes[i] == cardResources[currentUpgradeIndex].upgradeType:
+			currentUpgradeIndex = rng.randi_range(0, cardResources.size() - 1)
+	
 	titleLabel.text = cardResources[currentUpgradeIndex].title
 	textureRect.texture = cardResources[currentUpgradeIndex].texture
 	descriptionLabel.text = cardResources[currentUpgradeIndex].description
+	
+	Globals.InstantiatedCardsIndexes.push_back(cardResources[currentUpgradeIndex].upgradeType)
 
 func _on_pressed():
 	upgrades.AddUpgrade(cardResources[currentUpgradeIndex].upgradeType)
