@@ -6,6 +6,7 @@ enum HpType {Player, Enemy}
 @export var maxHp: float
 @export var invulnerabilityTime: float
 @export var timer: Timer
+@export var expToDrop: Globals.ExpType
 
 @onready var curHp = maxHp
 @onready var game = get_node("/root/Game")
@@ -57,8 +58,6 @@ func Death():
 		gameOverPanel.visible = true
 	
 	if hpType == HpType.Enemy:
-		var instantiatedExp = exp.instantiate()
-		
 		if Globals.UpgradeDeathArrowCounter > 0:
 			for i in Globals.UpgradeDeathArrowCounter:
 				var instantiatedArrow = playerArrow.instantiate()
@@ -78,6 +77,8 @@ func Death():
 				
 				game.add_child(instantiatedArrow)
 		
+		var instantiatedExp = exp.instantiate()
+		instantiatedExp.expType = expToDrop
 		instantiatedExp.global_position = get_parent().global_position
 		game.add_child(instantiatedExp)
 		get_parent().queue_free()

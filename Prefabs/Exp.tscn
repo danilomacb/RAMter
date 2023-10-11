@@ -1,17 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://jj5ecfa4mxg8"]
+[gd_scene load_steps=5 format=3 uid="uid://jj5ecfa4mxg8"]
 
 [ext_resource type="Script" path="res://Scripts/Exp.gd" id="1_7qvws"]
-[ext_resource type="Texture2D" uid="uid://cf3hklspptw2g" path="res://Sprites/Exp.png" id="2_ll7dw"]
+[ext_resource type="Texture2D" uid="uid://cf3hklspptw2g" path="res://Sprites/Exps/BlueExp.png" id="2_tldqm"]
+[ext_resource type="Texture2D" uid="uid://b5gc5djxc8hje" path="res://Sprites/Exps/RedExp.png" id="3_7cxam"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3edv8"]
 size = Vector2(10, 11.5)
 
-[node name="Exp" type="Area2D" groups=["Exps"]]
+[node name="Exp" type="Area2D" node_paths=PackedStringArray("sprite2D") groups=["Exps"]]
 collision_mask = 32
 script = ExtResource("1_7qvws")
+sprite2D = NodePath("Sprite2D")
+crystalsTextures = Array[CompressedTexture2D]([ExtResource("2_tldqm"), ExtResource("3_7cxam")])
 
-[node name="WhiteSquare" type="Sprite2D" parent="."]
-texture = ExtResource("2_ll7dw")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tldqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3edv8")

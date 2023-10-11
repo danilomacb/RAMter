@@ -2,19 +2,16 @@ extends Node
 
 signal OnLevelUp
 
-@export var expIncrementor: int
-
 @onready var expBar: TextureProgressBar = get_node("/root/Game/CanvasLayer/Control/ExpBar")
 
 var expCollected: int
 var lv: int
 var nexLvExp: int = 1
 
-func AddExp():
+func AddExp(expIncrementor: int):
 	expCollected += expIncrementor
 	
 	expBar.value = (float(expCollected) / float(nexLvExp)) * 100
-	print(expBar.value)
 	
 	if expCollected >= nexLvExp:
 		LevelUp()
