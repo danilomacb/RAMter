@@ -115,11 +115,11 @@ dashSpeed = 500.0
 shootTimer = NodePath("ShootTimer")
 dashTimer = NodePath("DashTimer")
 dashCooldownTimer = NodePath("DashCooldownTimer")
-animatedSprite2d = NodePath("AnimatedSprite2D")
+animatedSprite2d = NodePath("Sprite")
 bow = NodePath("Bow")
 hp = NodePath("Hp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pvucm")
 animation = &"Walk"
 autoplay = "Idle"

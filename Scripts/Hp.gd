@@ -18,12 +18,16 @@ var playerArrow: PackedScene = load("res://Prefabs/PlayerArrow.tscn")
 
 var rng = RandomNumberGenerator.new()
 
+var blinkTime: float = 0.05
+
 func _ready():
 	get_tree().paused = false
 
 func TakeDamage(damage):
 	curHp -= damage
-		
+	
+	Blink()
+	
 	var instantiatedDamageIndicator = damageIndicator.instantiate()
 	instantiatedDamageIndicator.label.text = str(damage)
 	instantiatedDamageIndicator.global_position = get_parent().global_position
@@ -36,6 +40,14 @@ func TakeDamage(damage):
 	
 	if curHp <= 0:
 		Death()
+
+func Blink():
+	var sprite = get_parent().get_node("Sprite")
+	var tween = create_tween()
+	
+	for i in 5:
+		tween.tween_property(sprite, "modulate", Color.TRANSPARENT, blinkTime)
+		tween.tween_property(sprite, "modulate", Color.WHITE, blinkTime)
 
 func Death():
 	if hpType == HpType.Player:
