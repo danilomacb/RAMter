@@ -6,9 +6,11 @@ extends CharacterBody2D
 @export var bow: AnimatedSprite2D
 @export var hp: Hp
 
+@onready var pausePanel: Panel = get_node("/root/Game/CanvasLayer/Control/PausePanel")
+
 var upgrades = load("res://Scripts/Upgrades.gd").new()
 
-var canShoot = true
+var canShoot: bool = true
 
 func _physics_process(delta):
 	Move()

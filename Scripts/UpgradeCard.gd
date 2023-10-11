@@ -26,3 +26,4 @@ func _on_pressed():
 	upgrades.AddUpgrade(cardResources[currentUpgradeIndex].upgradeType)
 	get_parent().visible = false
 	get_tree().paused = false
+	Globals.ShowingLvUpPanel = false

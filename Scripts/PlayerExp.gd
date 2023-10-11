@@ -24,3 +24,4 @@ func LevelUp():
 	lv += 1
 	get_node("/root/Game/CanvasLayer/Control/UpgradePanel").visible = true
 	get_tree().paused = true
+	Globals.ShowingLvUpPanel = true

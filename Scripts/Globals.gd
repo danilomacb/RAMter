@@ -9,3 +9,5 @@ var UpgradeReverseShotCounter: int = 0
 var UpgradePenetratorCounter: int = 0
 var UpgradeReflectorCounter: int = 0
 var UpgradeDeathArrowCounter: int = 0
+
+var ShowingLvUpPanel: bool = false
