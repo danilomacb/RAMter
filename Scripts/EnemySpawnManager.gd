@@ -4,7 +4,7 @@ extends Node
 
 @onready var camera: Camera2D = get_node("/root/Game/Player/Camera2D")
 
-var enemys: Array[PackedScene] = [load("res://Prefabs/Enemy.tscn"), load("res://Prefabs/Tiilibra.tscn")]
+var enemys: Array[PackedScene] = [load("res://Prefabs/Enemy.tscn"), load("res://Prefabs/Tiilibra.tscn"), load("res://Prefabs/NaoConhecido.tscn")]
 
 var width = ProjectSettings.get_setting("display/window/size/viewport_width")
 var height = ProjectSettings.get_setting("display/window/size/viewport_height")
@@ -60,15 +60,24 @@ func GetRandomEnemyPos() -> Vector2:
 func GetRandomEnemy() -> PackedScene:
 	var randomEnemyIndex = rng.randi_range(0, 99)
 	
-	var skeletonChance = 94 - int(time / 2)
+	var chance = [70, 94]
 	
-	if skeletonChance < 5:
-		skeletonChance = 5
+	for i in chance.size():
+		chance[i] -= int(time / 2)
 	
-	if randomEnemyIndex < skeletonChance:
+	if chance[0] < 5:
+		chance[0] = 5
+	
+	if chance[1] < 15:
+		chance[1] = 15
+	
+	if randomEnemyIndex < chance[0]:
 		return enemys[0]
 	
-	return enemys[1]
+	if randomEnemyIndex < chance[1]:
+		return enemys[1]
+	
+	return enemys[2]
 
 func _on_timer_timeout():
 	canSpawnEnemy = true

@@ -8,12 +8,16 @@ var expIncrementor: int
 
 func _ready():
 	match expType:
-		Globals.ExpType.Blue:
+		Globals.ExpType.Green:
 			sprite2D.texture = crystalsTextures[0]
 			expIncrementor = 1
-		
-		Globals.ExpType.Red:
+			
+		Globals.ExpType.Blue:
 			sprite2D.texture = crystalsTextures[1]
+			expIncrementor = 2
+			
+		Globals.ExpType.Red:
+			sprite2D.texture = crystalsTextures[2]
 			expIncrementor = 3
 
 func _on_body_entered(body: CharacterBody2D):
