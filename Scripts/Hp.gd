@@ -5,7 +5,6 @@ enum HpType {Player, Enemy}
 @export var hpType: HpType
 @export var maxHp: float
 @export var invulnerabilityTime: float
-@export var timer: Timer
 @export var expToDrop: Globals.ExpType
 
 @onready var curHp = maxHp
@@ -19,20 +18,10 @@ var playerArrow: PackedScene = load("res://Prefabs/PlayerArrow.tscn")
 
 var rng = RandomNumberGenerator.new()
 
-var canTakeDamage = true
-
 func _ready():
 	get_tree().paused = false
-	
-	timer.wait_time = invulnerabilityTime
 
 func TakeDamage(damage):
-	if !canTakeDamage && hpType == HpType.Player:
-		return
-	
-	canTakeDamage = false
-	timer.start()
-	
 	curHp -= damage
 		
 	var instantiatedDamageIndicator = damageIndicator.instantiate()
@@ -82,6 +71,3 @@ func Death():
 		instantiatedExp.global_position = get_parent().global_position
 		game.add_child(instantiatedExp)
 		get_parent().queue_free()
-
-func _on_timer_timeout():
-	canTakeDamage = true

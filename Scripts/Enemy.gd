@@ -3,8 +3,8 @@ extends CharacterBody2D
 @export var moveSpeed: float
 @export var flip: bool
 @export var animatedSprite2D: AnimatedSprite2D
-@export var timer: Timer
 @export var damage: int
+@export var timer: Timer
 
 var collidingWithPlayer: bool = false
 var playerBody: CharacterBody2D

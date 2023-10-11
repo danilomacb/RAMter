@@ -137,10 +137,9 @@ animation = &"Idle"
 autoplay = "Idle"
 script = ExtResource("8_xbqv5")
 
-[node name="Hp" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("3_1l1p5")]
+[node name="Hp" parent="." instance=ExtResource("3_1l1p5")]
 maxHp = 10.0
 invulnerabilityTime = 1.0
-timer = NodePath("../Timer")
 
 [node name="PlayerExp" type="Node" parent="."]
 script = ExtResource("4_8yrjw")
