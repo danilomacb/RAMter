@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6t1lgjewcbon"]
+[gd_scene load_steps=9 format=3 uid="uid://6t1lgjewcbon"]
 
 [ext_resource type="Script" path="res://Scripts/UpgradeCard.gd" id="1_mlppi"]
 [ext_resource type="Resource" uid="uid://ig6asbrd1aef" path="res://Resources/AttackSpeed.tres" id="2_56uls"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://c2qwyexfxb6tk" path="res://Resources/Penetrator.tres" id="5_4x6wo"]
 [ext_resource type="Resource" uid="uid://b35osamq5swh2" path="res://Resources/Reflector.tres" id="6_1xt0u"]
 [ext_resource type="Resource" uid="uid://b3xb6hrhryixw" path="res://Resources/ReverseShot.tres" id="7_jq82n"]
+[ext_resource type="FontFile" uid="uid://bkirvl5j6t4n3" path="res://Fonts/PixelifySans-Regular.ttf" id="8_r4h3a"]
 
 [node name="UpgradeCard" type="Button"]
 anchors_preset = 8
@@ -29,6 +30,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_r4h3a")
 theme_override_font_sizes/font_size = 14
 text = "Title"
 horizontal_alignment = 1
@@ -58,7 +60,8 @@ offset_top = -39.0
 offset_right = -10.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("8_r4h3a")
+theme_override_font_sizes/font_size = 6
 text = "Description"
 horizontal_alignment = 1
 autowrap_mode = 2

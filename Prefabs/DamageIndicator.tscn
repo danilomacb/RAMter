@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://t7eqcaw1f13g"]
+[gd_scene load_steps=6 format=3 uid="uid://t7eqcaw1f13g"]
 
 [ext_resource type="Script" path="res://Scripts/DamageIndicator.gd" id="1_wvk3y"]
+[ext_resource type="FontFile" uid="uid://bkirvl5j6t4n3" path="res://Fonts/PixelifySans-Regular.ttf" id="2_6nqvo"]
 
 [sub_resource type="Animation" id="Animation_hxbbm"]
 length = 0.001
@@ -86,6 +87,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.235294, 0.180392, 1)
+theme_override_fonts/font = ExtResource("2_6nqvo")
 text = "1"
 horizontal_alignment = 1
 
