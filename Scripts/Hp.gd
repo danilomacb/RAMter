@@ -27,10 +27,13 @@ func TakeDamage(damage):
 	var instantiatedDamageIndicator = damageIndicator.instantiate()
 	instantiatedDamageIndicator.label.text = str(damage)
 	instantiatedDamageIndicator.global_position = get_parent().global_position
-	get_tree().root.add_child(instantiatedDamageIndicator)
 	
 	if hpType == HpType.Player:
 		hpBar.value = (curHp / maxHp) * 100
+		print(instantiatedDamageIndicator.label)
+		instantiatedDamageIndicator.label.modulate = Color("9b1a0a")
+	
+	get_tree().root.add_child(instantiatedDamageIndicator)
 	
 	if curHp <= 0:
 		Death()
