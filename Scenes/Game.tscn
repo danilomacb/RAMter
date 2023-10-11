@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/EnemySpawnManager.gd" id="3_sp687"]
 [ext_resource type="Texture2D" uid="uid://dyvlk1rdm71e3" path="res://Sprites/HpBar.png" id="5_7o43d"]
 [ext_resource type="Texture2D" uid="uid://xqw8xchvvif4" path="res://Sprites/HpBarOver.png" id="6_2kjhh"]
-[ext_resource type="Script" path="res://Scripts/UpgradeCard.gd" id="7_qvdpu"]
+[ext_resource type="PackedScene" uid="uid://6t1lgjewcbon" path="res://Prefabs/UpgradeCard.tscn" id="8_msqct"]
 [ext_resource type="Script" path="res://Scripts/PlayAgainButton.gd" id="9_5dn3i"]
 [ext_resource type="Texture2D" uid="uid://5l333m8tcxne" path="res://Sprites/gameOver.png" id="9_xo048"]
 
@@ -82,53 +82,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UpgradeCard1" type="Button" parent="CanvasLayer/Control/UpgradePanel"]
+[node name="UpgradeCard" parent="CanvasLayer/Control/UpgradePanel" instance=ExtResource("8_msqct")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -170.0
-offset_top = -75.0
-offset_right = -70.0
-offset_bottom = 75.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Upgrade 1"
-script = ExtResource("7_qvdpu")
 
-[node name="UpgradeCard2" type="Button" parent="CanvasLayer/Control/UpgradePanel"]
+[node name="UpgradeCard2" parent="CanvasLayer/Control/UpgradePanel" instance=ExtResource("8_msqct")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -50.0
-offset_top = -75.0
 offset_right = 50.0
-offset_bottom = 75.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Upgrade 2"
-script = ExtResource("7_qvdpu")
 
-[node name="UpgradeCard3" type="Button" parent="CanvasLayer/Control/UpgradePanel"]
+[node name="UpgradeCard3" parent="CanvasLayer/Control/UpgradePanel" instance=ExtResource("8_msqct")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = 70.0
-offset_top = -75.0
 offset_right = 170.0
-offset_bottom = 75.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Upgrade 3"
-script = ExtResource("7_qvdpu")
 
 [node name="GameOverPanel" type="Panel" parent="CanvasLayer/Control"]
 visible = false
@@ -172,7 +137,4 @@ text = "PLAY AGAIN"
 script = ExtResource("9_5dn3i")
 
 [connection signal="timeout" from="EnemySpawnManager/Timer" to="EnemySpawnManager" method="_on_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/Control/UpgradePanel/UpgradeCard1" to="CanvasLayer/Control/UpgradePanel/UpgradeCard1" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/UpgradePanel/UpgradeCard2" to="CanvasLayer/Control/UpgradePanel/UpgradeCard2" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/UpgradePanel/UpgradeCard3" to="CanvasLayer/Control/UpgradePanel/UpgradeCard3" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/GameOverPanel/PlayAgainButton" to="CanvasLayer/Control/GameOverPanel/PlayAgainButton" method="_on_pressed"]

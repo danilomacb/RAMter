@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://6t1lgjewcbon"]
+
+[ext_resource type="Script" path="res://Scripts/UpgradeCard.gd" id="1_mlppi"]
+[ext_resource type="Resource" uid="uid://ig6asbrd1aef" path="res://Resources/AttackSpeed.tres" id="2_56uls"]
+[ext_resource type="Resource" uid="uid://c05reasqjm5wr" path="res://Resources/DeathArrow.tres" id="3_kh87x"]
+[ext_resource type="Resource" uid="uid://ckvwwoqa6kma6" path="res://Resources/MultiShot.tres" id="4_yjj2y"]
+[ext_resource type="Resource" uid="uid://c2qwyexfxb6tk" path="res://Resources/Penetrator.tres" id="5_4x6wo"]
+[ext_resource type="Resource" uid="uid://b35osamq5swh2" path="res://Resources/Reflector.tres" id="6_1xt0u"]
+[ext_resource type="Resource" uid="uid://b3xb6hrhryixw" path="res://Resources/ReverseShot.tres" id="7_jq82n"]
+
+[node name="UpgradeCard" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -75.0
+offset_right = -70.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mlppi")
+cardResources = Array[Resource("res://Scripts/CardResourse.gd")]([ExtResource("2_56uls"), ExtResource("3_kh87x"), ExtResource("4_yjj2y"), ExtResource("5_4x6wo"), ExtResource("6_1xt0u"), ExtResource("7_jq82n")])
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -52.0
+offset_right = -10.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DescriptionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -39.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "Description"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

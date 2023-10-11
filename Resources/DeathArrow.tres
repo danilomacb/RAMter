@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://c05reasqjm5wr"]
+
+[ext_resource type="Texture2D" uid="uid://cqq21r53miynr" path="res://Sprites/CardIcons/DeathArrow.png" id="1_rc3qq"]
+[ext_resource type="Script" path="res://Scripts/CardResourse.gd" id="1_v8mgb"]
+
+[resource]
+script = ExtResource("1_v8mgb")
+upgradeType = 5
+title = "Death Arrow"
+texture = ExtResource("1_rc3qq")
+description = "Spawn arrows when you kill an enemy"

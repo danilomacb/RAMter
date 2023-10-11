@@ -1,7 +1,5 @@
 extends Node2D
 
-enum UpgradeType {AttackSpeed, Multishot, ReverseShot, Penetrator, Reflector, DeathArrow}
-
 var playerArrow = load("res://Prefabs/PlayerArrow.tscn")
 
 var base_angle_diff = PI/12
@@ -27,15 +25,15 @@ func SetArrowDirAndRotation(i, playerPos, bowPos, game, mousePos):
 
 func AddUpgrade(upgradeType):
 	match (upgradeType):
-		UpgradeType.Multishot:
+		Globals.UpgradeType.Multishot:
 			Globals.UpgradeMultiShotCounter += 1
-		UpgradeType.ReverseShot:
+		Globals.UpgradeType.ReverseShot:
 			Globals.UpgradeReverseShotCounter += 1
-		UpgradeType.Penetrator:
+		Globals.UpgradeType.Penetrator:
 			Globals.UpgradePenetratorCounter += 1
-		UpgradeType.AttackSpeed:
+		Globals.UpgradeType.AttackSpeed:
 			Globals.UpgradeAttackSpeedCounter += 1
-		UpgradeType.Reflector:
+		Globals.UpgradeType.Reflector:
 			Globals.UpgradeReflectorCounter += 1
-		UpgradeType.DeathArrow:
+		Globals.UpgradeType.DeathArrow:
 			Globals.UpgradeDeathArrowCounter += 1

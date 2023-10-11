@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://c2qwyexfxb6tk"]
+
+[ext_resource type="Script" path="res://Scripts/CardResourse.gd" id="1_6hv40"]
+[ext_resource type="Texture2D" uid="uid://k34afpaly784" path="res://Sprites/CardIcons/Penetrator.png" id="1_ghvyo"]
+
+[resource]
+script = ExtResource("1_6hv40")
+upgradeType = 3
+title = "Penetrator"
+texture = ExtResource("1_ghvyo")
+description = "Your arrows can go through the enemies"

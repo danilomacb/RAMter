@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://ig6asbrd1aef"]
+
+[ext_resource type="Texture2D" uid="uid://2q2yao3sp8f5" path="res://Sprites/CardIcons/AttackSpeed.png" id="1_apr2e"]
+[ext_resource type="Script" path="res://Scripts/CardResourse.gd" id="1_cp5ta"]
+
+[resource]
+script = ExtResource("1_cp5ta")
+upgradeType = 0
+title = "Attack Speed"
+texture = ExtResource("1_apr2e")
+description = "Shoots more arrows in less time"
