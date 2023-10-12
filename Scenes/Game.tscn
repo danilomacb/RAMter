@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=20 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
@@ -27,6 +27,18 @@ texture = ExtResource("2_itwxu")
 [sub_resource type="TileSet" id="TileSet_e8jtl"]
 sources/0 = SubResource("TileSetAtlasSource_kwwc3")
 sources/1 = SubResource("TileSetAtlasSource_xfwyh")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf5e2"]
+bg_color = Color(0.607843, 0.101961, 0.0392157, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.333333, 0.0588235, 0.0392157, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="Animation" id="Animation_sx1fj"]
 resource_name = "Default"
@@ -199,6 +211,11 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("10_rsjyn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tf5e2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tf5e2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tf5e2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tf5e2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tf5e2")
 text = "PLAY AGAIN"
 script = ExtResource("9_5dn3i")
 
