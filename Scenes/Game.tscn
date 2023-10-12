@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=21 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://5l333m8tcxne" path="res://Sprites/gameOver.png" id="9_xo048"]
 [ext_resource type="FontFile" uid="uid://bkirvl5j6t4n3" path="res://Fonts/PixelifySans-Regular.ttf" id="10_rsjyn"]
 [ext_resource type="Script" path="res://Scripts/PausePanel.gd" id="12_51ucs"]
+[ext_resource type="AudioStream" uid="uid://c8xhmjka121i0" path="res://Sounds/Musics/GameMusic.mp3" id="13_1rb0j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwwc3"]
 texture = ExtResource("1_gk4jy")
@@ -266,6 +267,11 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("10_rsjyn")
 theme_override_font_sizes/font_size = 20
 text = "Press ESC to continue"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("13_1rb0j")
+autoplay = true
 
 [connection signal="timeout" from="EnemySpawnManager/Timer" to="EnemySpawnManager" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Control/GameOverPanel/PlayAgainButton" to="CanvasLayer/Control/GameOverPanel/PlayAgainButton" method="_on_pressed"]
