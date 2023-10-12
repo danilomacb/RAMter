@@ -11,6 +11,8 @@ enum HpType {Player, Enemy}
 @onready var game = get_node("/root/Game")
 @onready var gameOverPanel = get_node("/root/Game/CanvasLayer/Control/GameOverPanel")
 @onready var hpBar: TextureProgressBar = get_node("/root/Game/CanvasLayer/Control/HpBar")
+@onready var gameMusic: AudioStreamPlayer2D = get_node("/root/Game/GameMusic")
+@onready var gameOverMusic: AudioStreamPlayer2D = get_node("/root/Game/GameOverMusic")
 
 var damageIndicator: PackedScene = load("res://Prefabs/DamageIndicator.tscn")
 var exp: PackedScene = load("res://Prefabs/Exp.tscn")
@@ -59,6 +61,8 @@ func Death():
 		Globals.UpgradeDeathArrowCounter = 0
 		get_tree().paused = true
 		gameOverPanel.visible = true
+		gameMusic.stop()
+		gameOverMusic.play()
 	
 	if hpType == HpType.Enemy:
 		if Globals.UpgradeDeathArrowCounter > 0:
