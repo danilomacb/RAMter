@@ -74,7 +74,7 @@ func Death():
 				while directionY == 0.0:
 					directionY = rng.randf_range(-1, 1)
 				
-				instantiatedArrow.direction = Vector2(directionX, directionY)
+				instantiatedArrow.direction = Vector2(directionX, directionY).normalized()
 				instantiatedArrow.global_position = get_parent().global_position
 				instantiatedArrow.rotation = atan2(instantiatedArrow.direction.y, instantiatedArrow.direction.x)
 				
