@@ -1,14 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://degaswqbjmvr5"]
+[gd_scene load_steps=9 format=3 uid="uid://et648dhkq1ih"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_5o8ic"]
-[ext_resource type="Texture2D" uid="uid://kdlwlsaoxl7n" path="res://Sprites/Tiilibra.png" id="2_dpwsf"]
-[ext_resource type="PackedScene" uid="uid://bjl316fgcu6oj" path="res://Prefabs/Hp.tscn" id="3_bc1x4"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_2m6y7"]
+[ext_resource type="Texture2D" uid="uid://cdhmb3um2uhc6" path="res://Sprites/Enemies/NaoConhecido.png" id="2_73v7e"]
+[ext_resource type="PackedScene" uid="uid://bjl316fgcu6oj" path="res://Prefabs/Hp.tscn" id="3_11wki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35s23"]
-size = Vector2(17, 23)
+size = Vector2(16, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4riv"]
-size = Vector2(19, 25)
+size = Vector2(18, 32)
 
 [sub_resource type="Animation" id="Animation_wxkpo"]
 resource_name = "Move"
@@ -51,17 +51,16 @@ _data = {
 [node name="Tiilibra" type="CharacterBody2D" node_paths=PackedStringArray("timer") groups=["Enemies"]]
 collision_layer = 5
 collision_mask = 4
-script = ExtResource("1_5o8ic")
+script = ExtResource("1_2m6y7")
 moveSpeed = 50.0
 damage = 2
 timer = NodePath("Timer")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_dpwsf")
+texture = ExtResource("2_73v7e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color(0.239216, 0.215686, 0.133333, 1)
-position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_35s23")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -69,14 +68,13 @@ collision_layer = 3
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_r4riv")
 debug_color = Color(0.984314, 0, 0.329412, 0.419608)
 
-[node name="Hp" parent="." instance=ExtResource("3_bc1x4")]
+[node name="Hp" parent="." instance=ExtResource("3_11wki")]
 hpType = 1
-maxHp = 3.0
-expToDrop = 1
+maxHp = 5.0
+expToDrop = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

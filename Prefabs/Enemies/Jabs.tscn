@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbopfiaa5rxdm"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_8xfeu"]
+[ext_resource type="Texture2D" uid="uid://dxap4el6lpg4c" path="res://Sprites/Enemies/Jabs.png" id="2_8sv2x"]
+[ext_resource type="PackedScene" uid="uid://bjl316fgcu6oj" path="res://Prefabs/Hp.tscn" id="3_13plg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35s23"]
+size = Vector2(12, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4riv"]
+size = Vector2(14, 21)
+
+[sub_resource type="Animation" id="Animation_wxkpo"]
+resource_name = "Move"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, 0.0, -0.174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nfrd6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a6yjv"]
+_data = {
+"Move": SubResource("Animation_wxkpo"),
+"RESET": SubResource("Animation_nfrd6")
+}
+
+[node name="Jabs" type="CharacterBody2D" node_paths=PackedStringArray("timer") groups=["Enemies"]]
+collision_mask = 32
+script = ExtResource("1_8xfeu")
+moveSpeed = 250.0
+damage = 2
+timer = NodePath("Timer")
+enemyType = 1
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_8sv2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(0.239216, 0.215686, 0.133333, 1)
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_35s23")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_r4riv")
+debug_color = Color(0.984314, 0, 0.329412, 0.419608)
+
+[node name="Hp" parent="." instance=ExtResource("3_13plg")]
+hpType = 1
+maxHp = 1.0
+expToDrop = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Move"
+libraries = {
+"": SubResource("AnimationLibrary_a6yjv")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

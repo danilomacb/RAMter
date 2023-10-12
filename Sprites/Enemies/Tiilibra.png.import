@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0o71mwq5ebtf"
-path="res://.godot/imported/SkeletonWalk.png-7070dbe16343c732e20a2a79db050547.ctex"
+uid="uid://kdlwlsaoxl7n"
+path="res://.godot/imported/Tiilibra.png-cf32d72ca1b5e40f2591429cceed65ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/SkeletonWalk.png"
-dest_files=["res://.godot/imported/SkeletonWalk.png-7070dbe16343c732e20a2a79db050547.ctex"]
+source_file="res://Sprites/Enemies/Tiilibra.png"
+dest_files=["res://.godot/imported/Tiilibra.png-cf32d72ca1b5e40f2591429cceed65ab.ctex"]
 
 [params]
 

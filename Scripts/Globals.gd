@@ -1,7 +1,7 @@
 extends Node
 
 enum UpgradeType {AttackSpeed, Multishot, ReverseShot, Penetrator, Reflector, DeathArrow}
-enum ExpType {Green, Blue, Red}
+enum ExpType {Green, Blue, Red, Yellow}
 
 var UpgradeAttackSpeedCounter: int = 0
 var UpgradeMultiShotCounter: int = 0

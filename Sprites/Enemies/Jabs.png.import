@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdhmb3um2uhc6"
-path="res://.godot/imported/NaoConhecido.png-bb32c20038b9b0494507119df87b0adc.ctex"
+uid="uid://dxap4el6lpg4c"
+path="res://.godot/imported/Jabs.png-aae5e7eecfab7c2702ae9d0890e35807.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/NaoConhecido.png"
-dest_files=["res://.godot/imported/NaoConhecido.png-bb32c20038b9b0494507119df87b0adc.ctex"]
+source_file="res://Sprites/Enemies/Jabs.png"
+dest_files=["res://.godot/imported/Jabs.png-aae5e7eecfab7c2702ae9d0890e35807.ctex"]
 
 [params]
 

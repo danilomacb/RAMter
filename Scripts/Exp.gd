@@ -19,6 +19,10 @@ func _ready():
 		Globals.ExpType.Red:
 			sprite2D.texture = crystalsTextures[2]
 			expIncrementor = 3
+			
+		Globals.ExpType.Yellow:
+			sprite2D.texture = crystalsTextures[3]
+			expIncrementor = 9999
 
 func _on_body_entered(body: CharacterBody2D):
 	if body.is_in_group("Player"):
