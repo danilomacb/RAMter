@@ -52,7 +52,7 @@ func Move():
 		animatedSprite2d.play("Idle")
 
 func Shoot():
-	if canShoot:
+	if (Input.is_action_just_pressed("Shoot") || Globals.AutoShoot) && canShoot:
 		canShoot = false
 		
 		shootTimer.wait_time = 1 - Globals.UpgradeAttackSpeedCounter * 0.1

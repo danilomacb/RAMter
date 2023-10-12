@@ -12,3 +12,4 @@ var UpgradeDeathArrowCounter: int = 0
 
 var ShowingLvUpPanel: bool = false
 var InstantiatedCardsIndexes: Array[UpgradeType]
+var AutoShoot: bool = false
