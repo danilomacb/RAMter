@@ -6,11 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3b8g"]
 size = Vector2(11, 5)
 
-[node name="PlayerArrow" type="Area2D" groups=["Arrows"]]
+[node name="PlayerArrow" type="Area2D" node_paths=PackedStringArray("collisionShape2d") groups=["Arrows"]]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_aooo5")
 damage = 1.0
+collisionShape2d = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)

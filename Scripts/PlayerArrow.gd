@@ -1,11 +1,12 @@
 extends Area2D
 
 @export var damage: float
+@export var collisionShape2d: CollisionShape2D
 
-@onready var collisionShape2d: CollisionShape2D = $CollisionShape2D
 @onready var penetratorCounter: int = Globals.UpgradePenetratorCounter
 @onready var reflectorCounter: int = Globals.UpgradeReflectorCounter
 @onready var camera: Camera2D = get_node("/root/Game/Player/Camera2D")
+@onready var arrowHitSfx: AudioStreamPlayer2D = get_node("/root/Game/ArrowHitSfx")
 
 @onready var width = ProjectSettings.get_setting("display/window/size/viewport_width") / camera.zoom.x / 2
 @onready var height = ProjectSettings.get_setting("display/window/size/viewport_height") / camera.zoom.y / 2
@@ -18,6 +19,7 @@ func _process(delta):
 func _on_area_entered(area):
 	if area.get_parent().is_in_group("Enemies"):
 		area.get_parent().get_node("Hp").TakeDamage(1)
+		arrowHitSfx.play()
 		
 		penetratorCounter -= 1
 		
