@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=26 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://bkirvl5j6t4n3" path="res://Fonts/PixelifySans-Regular.ttf" id="10_rsjyn"]
 [ext_resource type="Script" path="res://Scripts/PausePanel.gd" id="12_51ucs"]
 [ext_resource type="AudioStream" uid="uid://c8xhmjka121i0" path="res://Sounds/Musics/GameMusic.mp3" id="13_1rb0j"]
+[ext_resource type="PackedScene" uid="uid://vvi1umgoim1k" path="res://Prefabs/VolumeSlider.tscn" id="13_71x7i"]
 [ext_resource type="AudioStream" uid="uid://dwcrw54s4arts" path="res://Sounds/Sfxs/ArrowHitSfx.mp3" id="14_a7jbe"]
 [ext_resource type="AudioStream" uid="uid://v8w54gfgttl7" path="res://Sounds/Musics/GameOverMusic.mp3" id="14_sxh28"]
 
@@ -80,6 +81,30 @@ _data = {
 "Default": SubResource("Animation_sx1fj"),
 "RESET": SubResource("Animation_476kd")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hjrp"]
+bg_color = Color(0.235294, 0.623529, 0.611765, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.0941176, 0.247059, 0.223529, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddhsy"]
+bg_color = Color(0.607843, 0.101961, 0.0392157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.333333, 0.0588235, 0.0392157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="Game" type="Node2D"]
 
@@ -255,32 +280,101 @@ libraries = {
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/PausePanel"]
 layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.5
+offset_top = -28.0
+offset_right = 107.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("10_rsjyn")
+theme_override_font_sizes/font_size = 20
+text = "Press ESC to continue"
+
+[node name="VolumePanel" type="Panel" parent="CanvasLayer/Control/PausePanel"]
+layout_mode = 2
+offset_left = 261.5
+offset_top = 109.5
+offset_right = 411.5
+offset_bottom = 269.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_1hjrp")
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/Control/PausePanel/VolumePanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 17.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ddhsy")
+text = "X"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PausePanel/VolumePanel"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -83.5
-offset_top = 27.0
-offset_right = 83.5
-offset_bottom = 53.0
+offset_left = -58.5
+offset_top = -68.5
+offset_right = 58.5
+offset_bottom = 68.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MasterLabel" type="Label" parent="CanvasLayer/Control/PausePanel/VolumePanel/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("10_rsjyn")
-theme_override_font_sizes/font_size = 20
-text = "Press ESC to continue"
+text = "Master Volume"
+
+[node name="MasterVolumeSlider" parent="CanvasLayer/Control/PausePanel/VolumePanel/VBoxContainer" instance=ExtResource("13_71x7i")]
+layout_mode = 2
+busName = "Master"
+
+[node name="MusicLabel" type="Label" parent="CanvasLayer/Control/PausePanel/VolumePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_rsjyn")
+text = "Music Volume"
+
+[node name="MusicVolumeSlider" parent="CanvasLayer/Control/PausePanel/VolumePanel/VBoxContainer" instance=ExtResource("13_71x7i")]
+layout_mode = 2
+busName = "Music"
+
+[node name="SfxLabel" type="Label" parent="CanvasLayer/Control/PausePanel/VolumePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_rsjyn")
+text = "Sfx Volume"
+
+[node name="SfxVolumeSlider" parent="CanvasLayer/Control/PausePanel/VolumePanel/VBoxContainer" instance=ExtResource("13_71x7i")]
+layout_mode = 2
+busName = "Sfx"
 
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("13_1rb0j")
 autoplay = true
+bus = &"Music"
 
 [node name="GameOverMusic" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("14_sxh28")
+bus = &"Music"
 
 [node name="ArrowHitSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_a7jbe")
+bus = &"Sfx"
 
 [connection signal="timeout" from="EnemySpawnManager/Timer" to="EnemySpawnManager" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Control/GameOverPanel/PlayAgainButton" to="CanvasLayer/Control/GameOverPanel/PlayAgainButton" method="_on_pressed"]
