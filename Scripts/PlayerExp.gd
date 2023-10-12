@@ -4,6 +4,8 @@ signal OnLevelUp
 
 @onready var expBar: TextureProgressBar = get_node("/root/Game/CanvasLayer/Control/ExpBar")
 
+@export var lvUpSfx: AudioStreamPlayer2D
+
 var expCollected: int
 var lv: int
 var nexLvExp: int = 1
@@ -14,10 +16,12 @@ func AddExp(expIncrementor: int):
 	expBar.value = (float(expCollected) / float(nexLvExp)) * 100
 	
 	if expCollected >= nexLvExp:
-		LevelUp()
 		expBar.value = 0
+		LevelUp()
 
 func LevelUp():
+	lvUpSfx.play()
+	
 	emit_signal("OnLevelUp")
 	expCollected = 0
 	nexLvExp *= 2

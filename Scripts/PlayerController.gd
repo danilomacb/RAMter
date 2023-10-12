@@ -9,6 +9,8 @@ extends CharacterBody2D
 @export var bow: AnimatedSprite2D
 @export var hp: Hp
 @export var dashTrail: DashTrail
+@export var shootSfx: AudioStreamPlayer2D
+@export var dashSfx: AudioStreamPlayer2D
 
 @onready var pausePanel: Panel = get_node("/root/Game/CanvasLayer/Control/PausePanel")
 
@@ -62,6 +64,8 @@ func Shoot():
 		
 		upgrades.InstantiateArrows(global_position, bow.global_position, get_node("/root/Game"), get_global_mouse_position())
 		bow.play("Shoot")
+		
+		shootSfx.play()
 
 func Dash():
 	if Input.is_action_just_pressed("Dash") && canDash:
@@ -69,6 +73,7 @@ func Dash():
 		canDash = false
 		dashTimer.start()
 		dashCooldownTimer.start()
+		dashSfx.play()
 	
 	if isDashing:
 		velocity = lastDirection.normalized() * dashSpeed

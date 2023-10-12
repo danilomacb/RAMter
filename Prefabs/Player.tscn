@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://vcwf3q5q6m5r"]
+[gd_scene load_steps=25 format=3 uid="uid://vcwf3q5q6m5r"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_elqdo"]
 [ext_resource type="Texture2D" uid="uid://piftsefupt5f" path="res://Sprites/Player/PlayerIdle.png" id="2_atcc7"]
@@ -8,7 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dliilkib5osm8" path="res://Sprites/Player/Bow.png" id="4_wbq0h"]
 [ext_resource type="Texture2D" uid="uid://ubxkgtq7mjn" path="res://Sprites/Player/BowShoot.png" id="7_6ss53"]
 [ext_resource type="Script" path="res://Scripts/Bow.gd" id="8_xbqv5"]
+[ext_resource type="AudioStream" uid="uid://ps1t55bitg5q" path="res://Sounds/Sfxs/DashSfx.mp3" id="9_b4t37"]
 [ext_resource type="PackedScene" uid="uid://dbhrwh66r2phc" path="res://Prefabs/DashTrail.tscn" id="9_s6cjs"]
+[ext_resource type="AudioStream" uid="uid://dlteo6p46ctpy" path="res://Sounds/Sfxs/ShootSfx.mp3" id="10_3uhil"]
+[ext_resource type="AudioStream" uid="uid://dnc6a7kxp610i" path="res://Sounds/Sfxs/LvUpSfx.mp3" id="10_jnirt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_inay3"]
 atlas = ExtResource("3_ltvof")
@@ -108,7 +111,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootTimer", "dashTimer", "dashCooldownTimer", "animatedSprite2d", "bow", "hp", "dashTrail") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootTimer", "dashTimer", "dashCooldownTimer", "animatedSprite2d", "bow", "hp", "dashTrail", "shootSfx", "dashSfx") groups=["Player"]]
 collision_layer = 44
 script = ExtResource("1_elqdo")
 moveSpeed = 90.0
@@ -120,6 +123,8 @@ animatedSprite2d = NodePath("Sprite")
 bow = NodePath("Bow")
 hp = NodePath("Hp")
 dashTrail = NodePath("DashTrail")
+shootSfx = NodePath("ShootSfx")
+dashSfx = NodePath("DashSfx")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pvucm")
@@ -152,14 +157,26 @@ visible = false
 z_index = -1
 width = 3.0
 
+[node name="ShootSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_3uhil")
+
+[node name="DashSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_b4t37")
+
 [node name="Hp" parent="." instance=ExtResource("3_1l1p5")]
 maxHp = 10.0
 invulnerabilityTime = 1.0
 
-[node name="PlayerExp" type="Node" parent="."]
+[node name="PlayerExp" type="Node" parent="." node_paths=PackedStringArray("lvUpSfx")]
 script = ExtResource("4_8yrjw")
+lvUpSfx = NodePath("LvUpSfx")
+
+[node name="LvUpSfx" type="AudioStreamPlayer2D" parent="PlayerExp"]
+process_mode = 3
+stream = ExtResource("10_jnirt")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="animation_finished" from="Bow" to="." method="_on_bow_animation_finished"]
+[connection signal="finished" from="PlayerExp/LvUpSfx" to="PlayerExp" method="_on_lv_up_sfx_finished"]
