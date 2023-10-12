@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var animatedSprite2d: AnimatedSprite2D
 @export var bow: AnimatedSprite2D
 @export var hp: Hp
+@export var dashTrail: DashTrail
 
 @onready var pausePanel: Panel = get_node("/root/Game/CanvasLayer/Control/PausePanel")
 
@@ -71,6 +72,7 @@ func Dash():
 	
 	if isDashing:
 		velocity = lastDirection.normalized() * dashSpeed
+		dashTrail.visible = true
 
 func _on_bow_animation_finished():
 	bow.play("Idle")
@@ -81,6 +83,7 @@ func _on_shoot_timer_timeout():
 func _on_dash_timer_timeout():
 	isDashing = false
 	velocity = Vector2.ZERO
+	dashTrail.visible = false
 
 func _on_dash_cooldown_timer_timeout():
 	canDash = true

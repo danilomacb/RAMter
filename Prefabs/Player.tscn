@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://vcwf3q5q6m5r"]
+[gd_scene load_steps=22 format=3 uid="uid://vcwf3q5q6m5r"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_elqdo"]
 [ext_resource type="Texture2D" uid="uid://piftsefupt5f" path="res://Sprites/Player/PlayerIdle.png" id="2_atcc7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dliilkib5osm8" path="res://Sprites/Player/Bow.png" id="4_wbq0h"]
 [ext_resource type="Texture2D" uid="uid://ubxkgtq7mjn" path="res://Sprites/Player/BowShoot.png" id="7_6ss53"]
 [ext_resource type="Script" path="res://Scripts/Bow.gd" id="8_xbqv5"]
+[ext_resource type="PackedScene" uid="uid://dbhrwh66r2phc" path="res://Prefabs/DashTrail.tscn" id="9_s6cjs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_inay3"]
 atlas = ExtResource("3_ltvof")
@@ -107,7 +108,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootTimer", "dashTimer", "dashCooldownTimer", "animatedSprite2d", "bow", "hp") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootTimer", "dashTimer", "dashCooldownTimer", "animatedSprite2d", "bow", "hp", "dashTrail") groups=["Player"]]
 collision_layer = 44
 script = ExtResource("1_elqdo")
 moveSpeed = 90.0
@@ -118,6 +119,7 @@ dashCooldownTimer = NodePath("DashCooldownTimer")
 animatedSprite2d = NodePath("Sprite")
 bow = NodePath("Bow")
 hp = NodePath("Hp")
+dashTrail = NodePath("DashTrail")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pvucm")
@@ -144,6 +146,11 @@ sprite_frames = SubResource("SpriteFrames_ec31g")
 animation = &"Idle"
 autoplay = "Idle"
 script = ExtResource("8_xbqv5")
+
+[node name="DashTrail" parent="." instance=ExtResource("9_s6cjs")]
+visible = false
+z_index = -1
+width = 3.0
 
 [node name="Hp" parent="." instance=ExtResource("3_1l1p5")]
 maxHp = 10.0

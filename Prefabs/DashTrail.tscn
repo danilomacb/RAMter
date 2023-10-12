@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbhrwh66r2phc"]
+
+[ext_resource type="Script" path="res://Scripts/DashTrail.gd" id="1_qmqpf"]
+
+[sub_resource type="Curve" id="Curve_32h15"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_lpvpb"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="DashTrail" type="Line2D"]
+top_level = true
+width = 5.0
+width_curve = SubResource("Curve_32h15")
+gradient = SubResource("Gradient_lpvpb")
+script = ExtResource("1_qmqpf")
+maxLenght = 20
