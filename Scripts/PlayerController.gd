@@ -16,7 +16,6 @@ extends CharacterBody2D
 
 var upgrades = load("res://Scripts/Upgrades.gd").new()
 
-var lastDirection: Vector2 = Vector2.ZERO
 var canShoot: bool = true
 var isDashing: bool = false
 var canDash: bool = true
@@ -32,9 +31,6 @@ func Move():
 	var directionX = Input.get_axis("MoveLeft", "MoveRight")
 	var directionY = Input.get_axis("MoveUp", "MoveDown")
 	var direction = Vector2(directionX, directionY)
-	
-	if direction != Vector2.ZERO:
-		lastDirection = direction
 	
 	if isDashing:
 		return
@@ -76,7 +72,7 @@ func Dash():
 		dashSfx.play()
 	
 	if isDashing:
-		velocity = lastDirection.normalized() * dashSpeed
+		velocity = (get_global_mouse_position() - global_position).normalized() * dashSpeed
 		dashTrail.visible = true
 
 func _on_bow_animation_finished():
