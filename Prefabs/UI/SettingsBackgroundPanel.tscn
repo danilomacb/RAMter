@@ -1,0 +1,140 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1fkdju2hvxl2"]
+
+[ext_resource type="Script" path="res://Scripts/SettingsPanel.gd" id="1_7c54f"]
+[ext_resource type="FontFile" uid="uid://bkirvl5j6t4n3" path="res://Fonts/PixelifySans-Regular.ttf" id="1_onjwk"]
+[ext_resource type="PackedScene" uid="uid://vvi1umgoim1k" path="res://Prefabs/UI/VolumeSlider.tscn" id="2_uat1m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hjrp"]
+bg_color = Color(0.235294, 0.623529, 0.611765, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.0941176, 0.247059, 0.223529, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddhsy"]
+bg_color = Color(0.607843, 0.101961, 0.0392157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.333333, 0.0588235, 0.0392157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="SettingsBackgroundPanel" type="Panel"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsPanel" type="Panel" parent="." node_paths=PackedStringArray("settingBackgroundPanel")]
+custom_minimum_size = Vector2(150, 160)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -80.0
+offset_right = 95.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_1hjrp")
+script = ExtResource("1_7c54f")
+settingBackgroundPanel = NodePath("..")
+metadata/_edit_use_anchors_ = true
+
+[node name="CloseButton" type="Button" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 17.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ddhsy")
+text = "X"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = -68.5
+offset_right = 58.5
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MasterLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_onjwk")
+text = "Master Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolumeSlider" parent="SettingsPanel/VBoxContainer" instance=ExtResource("2_uat1m")]
+layout_mode = 2
+busName = "Master"
+
+[node name="MusicLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_onjwk")
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeSlider" parent="SettingsPanel/VBoxContainer" instance=ExtResource("2_uat1m")]
+layout_mode = 2
+busName = "Music"
+
+[node name="SfxLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_onjwk")
+text = "Sfx Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SfxVolumeSlider" parent="SettingsPanel/VBoxContainer" instance=ExtResource("2_uat1m")]
+layout_mode = 2
+busName = "Sfx"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="AutoShootCheckButton" type="CheckButton" parent="SettingsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="AutoShootLabel" type="Label" parent="SettingsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_onjwk")
+text = "Auto Shoot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="SettingsPanel/CloseButton" to="SettingsPanel" method="_on_close_button_pressed"]
+[connection signal="toggled" from="SettingsPanel/VBoxContainer/HBoxContainer/AutoShootCheckButton" to="SettingsPanel" method="_on_auto_shoot_check_button_toggled"]

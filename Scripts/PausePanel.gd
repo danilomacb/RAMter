@@ -1,6 +1,6 @@
 extends Panel
 
-@export var volumePanel: Panel
+@export var settingBackgroundPanel: Panel
 
 var gamePaused: bool = false
 
@@ -21,10 +21,7 @@ func Pause():
 			get_tree().paused = false
 
 func _on_settings_button_pressed():
-	volumePanel.visible = true
-
-func _on_close_button_pressed():
-	volumePanel.visible = false
+	settingBackgroundPanel.visible = true
 
 func _on_continue_button_pressed():
 	Pause()
@@ -34,6 +31,3 @@ func _on_main_menu_button_pressed():
 
 func _on_exit_button_pressed():
 	get_tree().quit()
-
-func _on_auto_shoot_check_button_toggled(button_pressed):
-	Globals.AutoShoot = button_pressed
