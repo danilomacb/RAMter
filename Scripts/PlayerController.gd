@@ -20,12 +20,8 @@ var lastDirection: Vector2 = Vector2.ZERO
 var canShoot: bool = true
 var isDashing: bool = false
 var canDash: bool = true
-var time: float = 0.0
 
 func _physics_process(delta):
-	time += delta
-	print(time)
-	
 	Move()
 	Shoot()
 	Dash()

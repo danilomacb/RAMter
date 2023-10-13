@@ -149,20 +149,6 @@ tint_under = Color(0.14902, 0, 0, 1)
 tint_over = Color(0.988235, 0.639216, 0.607843, 1)
 tint_progress = Color(0.886275, 0, 0, 1)
 
-[node name="TimeLabel" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -21.0
-offset_top = 5.0
-offset_right = 21.0
-offset_bottom = 28.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("10_rsjyn")
-text = "0"
-script = ExtResource("9_ephme")
-
 [node name="ExpBar" type="TextureProgressBar" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 12
@@ -186,29 +172,6 @@ texture_progress = ExtResource("5_7o43d")
 tint_under = Color(0.121569, 0.141176, 0.0392157, 1)
 tint_over = Color(0.937255, 0.847059, 0.631373, 1)
 tint_progress = Color(0.937255, 0.67451, 0.156863, 1)
-
-[node name="UpgradePanel" type="Panel" parent="CanvasLayer/Control"]
-process_mode = 3
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="UpgradeCard" parent="CanvasLayer/Control/UpgradePanel" instance=ExtResource("8_msqct")]
-layout_mode = 1
-
-[node name="UpgradeCard2" parent="CanvasLayer/Control/UpgradePanel" instance=ExtResource("8_msqct")]
-layout_mode = 1
-offset_left = -50.0
-offset_right = 50.0
-
-[node name="UpgradeCard3" parent="CanvasLayer/Control/UpgradePanel" instance=ExtResource("8_msqct")]
-layout_mode = 1
-offset_left = 70.0
-offset_right = 170.0
 
 [node name="GameOverPanel" type="Panel" parent="CanvasLayer/Control"]
 process_mode = 3
@@ -257,6 +220,24 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_tf5e2")
 theme_override_styles/focus = SubResource("StyleBoxFlat_tf5e2")
 text = "PLAY AGAIN"
 script = ExtResource("9_5dn3i")
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_top = 5.0
+offset_right = 21.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_rsjyn")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_ephme")
 
 [node name="PausePanel" type="Panel" parent="CanvasLayer/Control" node_paths=PackedStringArray("settingBackgroundPanel")]
 process_mode = 3
@@ -382,6 +363,29 @@ text = "Exit"
 
 [node name="SettingsBackgroundPanel" parent="CanvasLayer/Control/PausePanel/PauseButtonsPanel" instance=ExtResource("13_4csfd")]
 layout_mode = 1
+
+[node name="UpgradePanel" type="Panel" parent="CanvasLayer/Control"]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpgradeCard" parent="CanvasLayer/Control/UpgradePanel" instance=ExtResource("8_msqct")]
+layout_mode = 1
+
+[node name="UpgradeCard2" parent="CanvasLayer/Control/UpgradePanel" instance=ExtResource("8_msqct")]
+layout_mode = 1
+offset_left = -50.0
+offset_right = 50.0
+
+[node name="UpgradeCard3" parent="CanvasLayer/Control/UpgradePanel" instance=ExtResource("8_msqct")]
+layout_mode = 1
+offset_left = 70.0
+offset_right = 170.0
 
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
