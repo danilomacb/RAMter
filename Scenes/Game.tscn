@@ -273,21 +273,6 @@ libraries = {
 "": SubResource("AnimationLibrary_hi8sw")
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/PausePanel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -107.5
-offset_top = 90.0
-offset_right = 107.5
-offset_bottom = 118.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.937255, 0.67451, 0.156863, 1)
-theme_override_fonts/font = ExtResource("10_rsjyn")
-theme_override_font_sizes/font_size = 20
-text = "Press ESC to continue"
-
 [node name="PauseButtonsPanel" type="Panel" parent="CanvasLayer/Control/PausePanel"]
 layout_mode = 1
 anchors_preset = 15
