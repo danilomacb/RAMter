@@ -49,6 +49,7 @@ _data = {
 }
 
 [node name="Jabs" type="CharacterBody2D" node_paths=PackedStringArray("timer") groups=["Enemies"]]
+collision_layer = 0
 collision_mask = 32
 script = ExtResource("1_8xfeu")
 moveSpeed = 250.0
@@ -79,7 +80,6 @@ maxHp = 1.0
 expToDrop = 3
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Move"
