@@ -4,6 +4,8 @@ extends Area2D
 @export var sprite2D: Sprite2D
 @export var crystalsTextures: Array[CompressedTexture2D]
 
+@onready var expCollectedSfx: AudioStreamPlayer2D = get_node("/root/Game/ExpCollectedSfx")
+
 var expIncrementor: int
 
 func _ready():
@@ -27,4 +29,5 @@ func _ready():
 func _on_body_entered(body: CharacterBody2D):
 	if body.is_in_group("Player"):
 		body.get_node("PlayerExp").AddExp(expIncrementor)
+		expCollectedSfx.play()
 		queue_free()

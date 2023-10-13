@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=28 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://b1fkdju2hvxl2" path="res://Prefabs/UI/SettingsBackgroundPanel.tscn" id="13_4csfd"]
 [ext_resource type="AudioStream" uid="uid://dwcrw54s4arts" path="res://Sounds/Sfxs/ArrowHitSfx.mp3" id="14_a7jbe"]
 [ext_resource type="AudioStream" uid="uid://v8w54gfgttl7" path="res://Sounds/Musics/GameOverMusic.mp3" id="14_sxh28"]
+[ext_resource type="AudioStream" uid="uid://o5ke6ejqdk78" path="res://Sounds/Sfxs/ExpCollectedSfx.wav" id="17_puyfy"]
+[ext_resource type="AudioStream" uid="uid://d0oems3kjpea2" path="res://Sounds/Sfxs/CardSellectedSfx.mp3" id="18_0pqn7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwwc3"]
 texture = ExtResource("1_gk4jy")
@@ -377,6 +379,16 @@ bus = &"Music"
 
 [node name="ArrowHitSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_a7jbe")
+bus = &"Sfx"
+
+[node name="ExpCollectedSfx" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("17_puyfy")
+bus = &"Sfx"
+
+[node name="CardSelectedSfx" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("18_0pqn7")
 bus = &"Sfx"
 
 [connection signal="timeout" from="EnemySpawnManager/Timer" to="EnemySpawnManager" method="_on_timer_timeout"]

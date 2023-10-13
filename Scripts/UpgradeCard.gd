@@ -5,6 +5,7 @@ extends Button
 @onready var titleLabel: Label = $TitleLabel
 @onready var textureRect: TextureRect = $TextureRect
 @onready var descriptionLabel: Label = $DescriptionLabel
+@onready var cardSelectedSfx: AudioStreamPlayer2D = get_node("/root/Game/CardSelectedSfx")
 
 var upgrades = load("res://Scripts/Upgrades.gd").new()
 
@@ -37,3 +38,5 @@ func _on_pressed():
 	get_tree().paused = false
 	Globals.ShowingLvUpPanel = false
 	Globals.InstantiatedCardsIndexes.clear()
+	
+	cardSelectedSfx.play()

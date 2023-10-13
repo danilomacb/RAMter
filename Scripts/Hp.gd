@@ -6,6 +6,7 @@ enum HpType {Player, Enemy}
 @export var maxHp: float
 @export var invulnerabilityTime: float
 @export var expToDrop: Globals.ExpType
+@export var playerTakeDamageSfx: AudioStreamPlayer2D
 
 @onready var curHp = maxHp
 @onready var game = get_node("/root/Game")
@@ -37,6 +38,8 @@ func TakeDamage(damage):
 	if hpType == HpType.Player:
 		hpBar.value = (curHp / maxHp) * 100
 		instantiatedDamageIndicator.label.modulate = Color("9b1a0a")
+		
+		playerTakeDamageSfx.play()
 	
 	get_tree().root.add_child(instantiatedDamageIndicator)
 	
