@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="JumpShipJam"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 
@@ -23,6 +23,7 @@ Globals="*res://Scripts/Globals.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/resizable=false
 window/stretch/mode="viewport"
 
 [input]

@@ -38,24 +38,25 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SettingsPanel" type="Panel" parent="." node_paths=PackedStringArray("settingBackgroundPanel")]
+[node name="SettingsPanel" type="Panel" parent="." node_paths=PackedStringArray("settingBackgroundPanel", "resolutionOptionButton")]
 custom_minimum_size = Vector2(150, 160)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -80.0
-offset_right = 95.0
-offset_bottom = 110.0
+offset_left = -85.0
+offset_top = -130.0
+offset_right = 85.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_1hjrp")
 script = ExtResource("1_7c54f")
 settingBackgroundPanel = NodePath("..")
+resolutionOptionButton = NodePath("VBoxContainer/ResolutionOptionButton")
 metadata/_edit_use_anchors_ = true
 
 [node name="CloseButton" type="Button" parent="SettingsPanel"]
@@ -123,13 +124,37 @@ vertical_alignment = 1
 layout_mode = 2
 busName = "Sfx"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
+[node name="FullScreenHBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
 
-[node name="AutoShootCheckButton" type="CheckButton" parent="SettingsPanel/VBoxContainer/HBoxContainer"]
+[node name="FullScreenCheckButton" type="CheckButton" parent="SettingsPanel/VBoxContainer/FullScreenHBoxContainer"]
+layout_mode = 2
+button_pressed = true
+
+[node name="FullScreenLabel" type="Label" parent="SettingsPanel/VBoxContainer/FullScreenHBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_onjwk")
+text = "Full Screen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResolutionLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_onjwk")
+text = "Resolution"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
 
-[node name="AutoShootLabel" type="Label" parent="SettingsPanel/VBoxContainer/HBoxContainer"]
+[node name="AutoShootHBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="AutoShootCheckButton" type="CheckButton" parent="SettingsPanel/VBoxContainer/AutoShootHBoxContainer"]
+layout_mode = 2
+
+[node name="AutoShootLabel" type="Label" parent="SettingsPanel/VBoxContainer/AutoShootHBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_onjwk")
 text = "Auto Shoot"
@@ -137,4 +162,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="SettingsPanel/CloseButton" to="SettingsPanel" method="_on_close_button_pressed"]
-[connection signal="toggled" from="SettingsPanel/VBoxContainer/HBoxContainer/AutoShootCheckButton" to="SettingsPanel" method="_on_auto_shoot_check_button_toggled"]
+[connection signal="toggled" from="SettingsPanel/VBoxContainer/FullScreenHBoxContainer/FullScreenCheckButton" to="SettingsPanel" method="_on_full_screen_check_button_toggled"]
+[connection signal="item_selected" from="SettingsPanel/VBoxContainer/ResolutionOptionButton" to="SettingsPanel" method="_on_resolution_option_button_item_selected"]
+[connection signal="toggled" from="SettingsPanel/VBoxContainer/AutoShootHBoxContainer/AutoShootCheckButton" to="SettingsPanel" method="_on_auto_shoot_check_button_toggled"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://hium0maypv3q"]
+[gd_scene load_steps=6 format=3 uid="uid://hium0maypv3q"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ha0a6"]
 [ext_resource type="FontFile" uid="uid://bkirvl5j6t4n3" path="res://Fonts/PixelifySans-Regular.ttf" id="1_p4dpe"]
+[ext_resource type="Texture2D" uid="uid://diq5hd5dojcb6" path="res://Sprites/MainMenuBackground.png" id="2_0g23v"]
 [ext_resource type="PackedScene" uid="uid://b1fkdju2hvxl2" path="res://Prefabs/UI/SettingsBackgroundPanel.tscn" id="2_74c3s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6hvu"]
@@ -28,6 +29,16 @@ grow_vertical = 2
 script = ExtResource("1_ha0a6")
 settingBackgroundPanel = NodePath("SettingsBackgroundPanel")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0g23v")
+expand_mode = 3
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -36,8 +47,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -38.0
-offset_top = -86.0
+offset_top = -106.0
 offset_right = 38.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
