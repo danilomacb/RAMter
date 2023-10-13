@@ -112,7 +112,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootTimer", "dashTimer", "dashCooldownTimer", "animatedSprite2d", "bow", "hp", "dashTrail", "shootSfx", "dashSfx") groups=["Player"]]
-collision_layer = 12
+collision_layer = 28
 script = ExtResource("1_elqdo")
 moveSpeed = 90.0
 dashSpeed = 500.0
