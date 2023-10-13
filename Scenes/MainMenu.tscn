@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://hium0maypv3q"]
+[gd_scene load_steps=7 format=3 uid="uid://hium0maypv3q"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ha0a6"]
 [ext_resource type="FontFile" uid="uid://bkirvl5j6t4n3" path="res://Fonts/PixelifySans-Regular.ttf" id="1_p4dpe"]
 [ext_resource type="Texture2D" uid="uid://diq5hd5dojcb6" path="res://Sprites/MainMenuBackground.png" id="2_0g23v"]
 [ext_resource type="PackedScene" uid="uid://b1fkdju2hvxl2" path="res://Prefabs/UI/SettingsBackgroundPanel.tscn" id="2_74c3s"]
+[ext_resource type="AudioStream" uid="uid://c4pddqxiqwxkp" path="res://Sounds/Musics/MainMenuMusic.mp3" id="5_03xht"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6hvu"]
 bg_color = Color(0.937255, 0.67451, 0.156863, 1)
@@ -94,6 +95,11 @@ text = "Exit
 
 [node name="SettingsBackgroundPanel" parent="." instance=ExtResource("2_74c3s")]
 layout_mode = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_03xht")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
