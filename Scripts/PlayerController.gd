@@ -19,6 +19,7 @@ var upgrades = load("res://Scripts/Upgrades.gd").new()
 var canShoot: bool = true
 var isDashing: bool = false
 var canDash: bool = true
+var dashDirection: Vector2
 
 func _physics_process(delta):
 	Move()
@@ -70,9 +71,10 @@ func Dash():
 		dashTimer.start()
 		dashCooldownTimer.start()
 		dashSfx.play()
+		dashDirection = (get_global_mouse_position() - global_position).normalized() 
 	
 	if isDashing:
-		velocity = (get_global_mouse_position() - global_position).normalized() * dashSpeed
+		velocity = dashDirection * dashSpeed
 		dashTrail.visible = true
 
 func _on_bow_animation_finished():
