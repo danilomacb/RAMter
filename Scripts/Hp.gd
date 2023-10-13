@@ -14,6 +14,7 @@ enum HpType {Player, Enemy}
 @onready var hpBar: TextureProgressBar = get_node("/root/Game/CanvasLayer/Control/HpBar")
 @onready var gameMusic: AudioStreamPlayer2D = get_node("/root/Game/GameMusic")
 @onready var gameOverMusic: AudioStreamPlayer2D = get_node("/root/Game/GameOverMusic")
+@onready var killsLabel: Label = get_node("/root/Game/CanvasLayer/Control/KillsLabel")
 
 var damageIndicator: PackedScene = load("res://Prefabs/DamageIndicator.tscn")
 var exp: PackedScene = load("res://Prefabs/Exp.tscn")
@@ -91,4 +92,8 @@ func Death():
 		instantiatedExp.expType = expToDrop
 		instantiatedExp.global_position = get_parent().global_position
 		game.add_child(instantiatedExp)
+		
+		killsLabel.killsCounter += 1
+		killsLabel.text = str(killsLabel.killsCounter)
+		
 		get_parent().queue_free()

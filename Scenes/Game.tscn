@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=31 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://5l333m8tcxne" path="res://Sprites/gameOver.png" id="9_xo048"]
 [ext_resource type="FontFile" uid="uid://bkirvl5j6t4n3" path="res://Fonts/PixelifySans-Regular.ttf" id="10_rsjyn"]
 [ext_resource type="Script" path="res://Scripts/PausePanel.gd" id="12_51ucs"]
+[ext_resource type="Texture2D" uid="uid://804o0x4phkfk" path="res://Sprites/KillsIcon.png" id="12_awhjs"]
 [ext_resource type="AudioStream" uid="uid://c8xhmjka121i0" path="res://Sounds/Musics/GameMusic.mp3" id="13_1rb0j"]
 [ext_resource type="PackedScene" uid="uid://b1fkdju2hvxl2" path="res://Prefabs/UI/SettingsBackgroundPanel.tscn" id="13_4csfd"]
+[ext_resource type="Script" path="res://Scripts/KillsLabel.gd" id="13_mpxct"]
 [ext_resource type="AudioStream" uid="uid://dwcrw54s4arts" path="res://Sounds/Sfxs/ArrowHitSfx.mp3" id="14_a7jbe"]
 [ext_resource type="AudioStream" uid="uid://v8w54gfgttl7" path="res://Sounds/Musics/GameOverMusic.mp3" id="14_sxh28"]
 [ext_resource type="AudioStream" uid="uid://o5ke6ejqdk78" path="res://Sounds/Sfxs/ExpCollectedSfx.wav" id="17_puyfy"]
@@ -238,6 +240,38 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("9_ephme")
+
+[node name="KillsTextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -55.0
+offset_top = 8.0
+offset_right = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+texture = ExtResource("12_awhjs")
+expand_mode = 2
+
+[node name="KillsLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -34.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 28.0
+grow_horizontal = 0
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_rsjyn")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_mpxct")
 
 [node name="PausePanel" type="Panel" parent="CanvasLayer/Control" node_paths=PackedStringArray("settingBackgroundPanel")]
 process_mode = 3
