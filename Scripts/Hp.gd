@@ -42,7 +42,7 @@ func TakeDamage(damage):
 		
 		playerTakeDamageSfx.play()
 	
-	get_tree().root.add_child(instantiatedDamageIndicator)
+	get_node("/root/Game").add_child(instantiatedDamageIndicator)
 	
 	if curHp <= 0:
 		Death()
