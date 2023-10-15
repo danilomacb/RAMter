@@ -18,11 +18,11 @@ func _ready():
 			
 		Globals.ExpType.Blue:
 			sprite2D.texture = crystalsTextures[1]
-			expIncrementor = 2
+			expIncrementor = 3
 			
 		Globals.ExpType.Red:
 			sprite2D.texture = crystalsTextures[2]
-			expIncrementor = 3
+			expIncrementor = 5
 			
 		Globals.ExpType.Yellow:
 			sprite2D.texture = crystalsTextures[3]

@@ -3,6 +3,7 @@ extends Node2D
 var playerArrow = load("res://Prefabs/PlayerArrow.tscn")
 
 var base_angle_diff = PI/12
+var arrowSpeed: float = 2.0
 
 func InstantiateArrows(playerPos, bowPos, game, mousePos):
 	for i in range(Globals.UpgradeMultiShotCounter + 1):
@@ -17,7 +18,7 @@ func SetArrowDirAndRotation(i, playerPos, bowPos, game, mousePos):
 	var angle = atan2(mousePos.y - playerPos.y, mousePos.x - playerPos.x)
 	var angleDif = base_angle_diff * (i - Globals.UpgradeMultiShotCounter / 2)
 
-	instantiatedArrow.direction = Vector2(cos(angle + angleDif), sin(angle + angleDif))
+	instantiatedArrow.direction = Vector2(cos(angle + angleDif), sin(angle + angleDif)) * arrowSpeed
 	instantiatedArrow.rotation = angle + angleDif
 	instantiatedArrow.global_position = bowPos
 

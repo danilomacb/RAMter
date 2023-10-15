@@ -33,8 +33,8 @@ func SpawnEnemys():
 	canSpawnEnemy = false
 	timer.wait_time = 1 - (time / 10) * 0.1
 	
-	if timer.wait_time < 0.1:
-		timer.wait_time = 0.1
+	if timer.wait_time < 0.01:
+		timer.wait_time = 0.01
 	
 	timer.start()
 	

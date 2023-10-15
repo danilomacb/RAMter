@@ -129,7 +129,7 @@ animations = [{
 collision_layer = 28
 script = ExtResource("1_elqdo")
 moveSpeed = 90.0
-dashSpeed = 500.0
+dashSpeed = 250.0
 shootTimer = NodePath("ShootTimer")
 dashTimer = NodePath("DashTimer")
 dashCooldownTimer = NodePath("DashCooldownTimer")
@@ -166,11 +166,14 @@ value = 100.0
 show_percentage = false
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="DashTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.3
+one_shot = true
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="Bow" type="AnimatedSprite2D" parent="."]
 position = Vector2(5, 2)
@@ -193,7 +196,7 @@ stream = ExtResource("9_b4t37")
 bus = &"Sfx"
 
 [node name="Hp" parent="." instance=ExtResource("3_1l1p5")]
-maxHp = 10.0
+maxHp = 20.0
 invulnerabilityTime = 1.0
 
 [node name="PlayerExp" type="Node" parent="." node_paths=PackedStringArray("lvUpSfx")]

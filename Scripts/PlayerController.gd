@@ -77,7 +77,6 @@ func Dash():
 		isDashing = true
 		canDash = false
 		dashTimer.start()
-		dashCooldownTimer.start()
 		dashSfx.play()
 		dashDirection = (get_global_mouse_position() - global_position).normalized() 
 	
@@ -109,6 +108,7 @@ func _on_dash_timer_timeout():
 	isDashing = false
 	velocity = Vector2.ZERO
 	dashTrail.visible = false
+	dashCooldownTimer.start()
 
 func _on_dash_cooldown_timer_timeout():
 	canDash = true
