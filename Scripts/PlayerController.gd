@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var dashTrail: DashTrail
 @export var shootSfx: AudioStreamPlayer2D
 @export var dashSfx: AudioStreamPlayer2D
+@export var cooldownBar: ProgressBar
 
 @onready var pausePanel: Panel = get_node("/root/Game/CanvasLayer/Control/PausePanel")
 
@@ -20,10 +21,15 @@ var canShoot: bool = true
 var isDashing: bool = false
 var canDash: bool = true
 var dashDirection: Vector2
+var shootCooldownRunning: bool
+var cooldownBarTime: float = 0.0
+
+func _process(delta):
+	Shoot()
+	SetCooldownBar(delta)
 
 func _physics_process(delta):
 	Move()
-	Shoot()
 	Dash()
 	
 	move_and_collide(velocity * delta)
@@ -63,6 +69,8 @@ func Shoot():
 		bow.play("Shoot")
 		
 		shootSfx.play()
+		
+		shootCooldownRunning = true
 
 func Dash():
 	if Input.is_action_just_pressed("Dash") && canDash:
@@ -77,11 +85,25 @@ func Dash():
 		velocity = dashDirection * dashSpeed
 		dashTrail.visible = true
 
+func SetCooldownBar(delta):
+	if !shootCooldownRunning:
+		return
+	
+	cooldownBarTime += delta
+	
+	cooldownBar.visible = true
+	
+	cooldownBar.value =  100 - ((cooldownBarTime / dashCooldownTimer.wait_time) * 100)
+
 func _on_bow_animation_finished():
 	bow.play("Idle")
 
 func _on_shoot_timer_timeout():
 	canShoot = true
+	shootCooldownRunning = false
+	cooldownBarTime = 0.0
+	cooldownBar.visible = false
+	cooldownBar.value = 100
 
 func _on_dash_timer_timeout():
 	isDashing = false

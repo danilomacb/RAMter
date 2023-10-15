@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://vcwf3q5q6m5r"]
+[gd_scene load_steps=27 format=3 uid="uid://vcwf3q5q6m5r"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_elqdo"]
 [ext_resource type="Texture2D" uid="uid://piftsefupt5f" path="res://Sprites/Player/PlayerIdle.png" id="2_atcc7"]
@@ -67,6 +67,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s27x8"]
 size = Vector2(8, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lbd5"]
+bg_color = Color(0.121569, 0.141176, 0.0392157, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vb5jt"]
+bg_color = Color(0.937255, 0.67451, 0.156863, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_p4enk"]
 atlas = ExtResource("7_6ss53")
 region = Rect2(0, 0, 32, 32)
@@ -111,7 +125,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootTimer", "dashTimer", "dashCooldownTimer", "animatedSprite2d", "bow", "hp", "dashTrail", "shootSfx", "dashSfx") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootTimer", "dashTimer", "dashCooldownTimer", "animatedSprite2d", "bow", "hp", "dashTrail", "shootSfx", "dashSfx", "cooldownBar") groups=["Player"]]
 collision_layer = 28
 script = ExtResource("1_elqdo")
 moveSpeed = 90.0
@@ -125,6 +139,7 @@ hp = NodePath("Hp")
 dashTrail = NodePath("DashTrail")
 shootSfx = NodePath("ShootSfx")
 dashSfx = NodePath("DashSfx")
+cooldownBar = NodePath("ProgressBar")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pvucm")
@@ -137,6 +152,18 @@ shape = SubResource("RectangleShape2D_s27x8")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -7.0
+offset_top = -13.0
+offset_right = 5.0
+offset_bottom = -9.0
+scale = Vector2(1, 0.5)
+theme_override_styles/background = SubResource("StyleBoxFlat_6lbd5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vb5jt")
+value = 100.0
+show_percentage = false
 
 [node name="ShootTimer" type="Timer" parent="."]
 
