@@ -21,10 +21,13 @@ func RandomizeUpgradeCard():
 	currentUpgradeIndex = rng.randi_range(0, cardResources.size() - 1)
 	
 	if Globals.InstantiatedCardsIndexes.size() > 0:
-		for i in Globals.InstantiatedCardsIndexes.size():
+		var i: int = 0
+		while i < Globals.InstantiatedCardsIndexes.size(): 
 			if Globals.InstantiatedCardsIndexes[i] == cardResources[currentUpgradeIndex].upgradeType:
 				currentUpgradeIndex = rng.randi_range(0, cardResources.size() - 1)
 				i = 0
+			else:
+				i += 1
 	
 	titleLabel.text = cardResources[currentUpgradeIndex].title
 	textureRect.texture = cardResources[currentUpgradeIndex].texture
