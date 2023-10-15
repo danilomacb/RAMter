@@ -1,10 +1,49 @@
-[gd_scene load_steps=8 format=3 uid="uid://jj5ecfa4mxg8"]
+[gd_scene load_steps=15 format=3 uid="uid://jj5ecfa4mxg8"]
 
 [ext_resource type="Script" path="res://Scripts/Exp.gd" id="1_7qvws"]
 [ext_resource type="Texture2D" uid="uid://cuw6qdypfnpmt" path="res://Sprites/Exps/GreenExp.png" id="2_8p1is"]
 [ext_resource type="Texture2D" uid="uid://cf3hklspptw2g" path="res://Sprites/Exps/BlueExp.png" id="2_tldqm"]
 [ext_resource type="Texture2D" uid="uid://b5gc5djxc8hje" path="res://Sprites/Exps/RedExp.png" id="3_7cxam"]
 [ext_resource type="Texture2D" uid="uid://bd1a883qwgha3" path="res://Sprites/Exps/YellowExp.png" id="5_br0fu"]
+[ext_resource type="Texture2D" uid="uid://dbxqlf6ucd0wq" path="res://Sprites/Shadow.png" id="6_jchhd"]
+
+[sub_resource type="Animation" id="Animation_g3egp"]
+resource_name = "Idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ShadowSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.15, 0.15), Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_gfcpf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ShadowSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xi1id"]
+_data = {
+"Idle": SubResource("Animation_g3egp"),
+"RESET": SubResource("Animation_gfcpf")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3edv8"]
 size = Vector2(10, 11.5)
@@ -12,11 +51,62 @@ size = Vector2(10, 11.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_mo6xa"]
 radius = 45.0111
 
+[sub_resource type="Animation" id="Animation_qnjhj"]
+resource_name = "Idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bt7xm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_efnow"]
+_data = {
+"Idle": SubResource("Animation_qnjhj"),
+"RESET": SubResource("Animation_bt7xm")
+}
+
 [node name="Exp" type="Area2D" node_paths=PackedStringArray("sprite2D") groups=["Exps"]]
 collision_mask = 16
 script = ExtResource("1_7qvws")
 sprite2D = NodePath("Sprite2D")
 crystalsTextures = Array[CompressedTexture2D]([ExtResource("2_8p1is"), ExtResource("2_tldqm"), ExtResource("3_7cxam"), ExtResource("5_br0fu")])
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+position = Vector2(0, 10)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_jchhd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShadowSprite2D"]
+root_node = NodePath("../../Sprite2D")
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_xi1id")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_tldqm")
@@ -29,6 +119,12 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_mo6xa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_efnow")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
