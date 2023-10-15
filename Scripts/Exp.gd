@@ -32,7 +32,7 @@ func _process(delta):
 	if !goToPlayer:
 		return
 	
-	global_position = global_position.move_toward(player.global_position, delta * 150)
+	global_position = global_position.move_toward(player.global_position, delta * 200)
 
 func _on_body_entered(body: CharacterBody2D):
 	if body.is_in_group("Player"):

@@ -69,7 +69,7 @@ func GetRandomEnemy() -> PackedScene:
 	var chance = [88, 93, 98]
 	
 	for i in chance.size() - 1:
-		chance[i] -= int(time / 2)
+		chance[i] -= int(time / 5)
 	
 	if chance[0] < 5:
 		chance[0] = 5
