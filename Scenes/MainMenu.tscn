@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://hium0maypv3q"]
+[gd_scene load_steps=8 format=3 uid="uid://hium0maypv3q"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ha0a6"]
 [ext_resource type="FontFile" uid="uid://bkirvl5j6t4n3" path="res://Fonts/PixelifySans-Regular.ttf" id="1_p4dpe"]
 [ext_resource type="Texture2D" uid="uid://diq5hd5dojcb6" path="res://Sprites/MainMenuBackground.png" id="2_0g23v"]
 [ext_resource type="PackedScene" uid="uid://b1fkdju2hvxl2" path="res://Prefabs/UI/SettingsBackgroundPanel.tscn" id="2_74c3s"]
 [ext_resource type="AudioStream" uid="uid://c4pddqxiqwxkp" path="res://Sounds/Musics/MainMenuMusic.mp3" id="5_03xht"]
+[ext_resource type="PackedScene" uid="uid://rwfis4pjr2lq" path="res://Prefabs/UI/CommandsPanel.tscn" id="6_e47lu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6hvu"]
 bg_color = Color(0.937255, 0.67451, 0.156863, 1)
@@ -20,7 +21,7 @@ corner_radius_bottom_left = 3
 expand_margin_left = 5.0
 expand_margin_right = 5.0
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("settingBackgroundPanel")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("settingBackgroundPanel", "commandsPanel")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -30,6 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ha0a6")
 settingBackgroundPanel = NodePath("SettingsBackgroundPanel")
+commandsPanel = NodePath("CommandsPanel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -69,6 +71,18 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_s6hvu")
 theme_override_styles/focus = SubResource("StyleBoxFlat_s6hvu")
 text = "Play"
 
+[node name="Commands" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_p4dpe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s6hvu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s6hvu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s6hvu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_s6hvu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_s6hvu")
+text = "Commands"
+
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -102,6 +116,10 @@ stream = ExtResource("5_03xht")
 autoplay = true
 bus = &"Music"
 
+[node name="CommandsPanel" parent="." instance=ExtResource("6_e47lu")]
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Commands" to="." method="_on_commands_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

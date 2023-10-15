@@ -1,6 +1,7 @@
 extends Panel
 
 @export var settingBackgroundPanel: Panel
+@export var commandsPanel: Panel
 
 func _process(delta):
 	if Input.is_action_just_pressed("Pause"):
@@ -29,3 +30,6 @@ func _on_main_menu_button_pressed():
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+
+func _on_commands_button_pressed():
+	commandsPanel.visible = true

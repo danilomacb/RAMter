@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://5p0vokpjskxb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddhsy"]
+bg_color = Color(0.607843, 0.101961, 0.0392157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.333333, 0.0588235, 0.0392157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="CloseButton" type="Button"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 17.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ddhsy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ddhsy")
+text = "X"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b000ctuyaiuww"]
+[gd_scene load_steps=35 format=3 uid="uid://b000ctuyaiuww"]
 
 [ext_resource type="Texture2D" uid="uid://4ui5ascs6onu" path="res://Sprites/WhiteSquare.png" id="1_gk4jy"]
 [ext_resource type="PackedScene" uid="uid://vcwf3q5q6m5r" path="res://Prefabs/Player.tscn" id="2_e80ac"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Scripts/KillsLabel.gd" id="13_mpxct"]
 [ext_resource type="AudioStream" uid="uid://dwcrw54s4arts" path="res://Sounds/Sfxs/ArrowHitSfx.mp3" id="14_a7jbe"]
 [ext_resource type="AudioStream" uid="uid://v8w54gfgttl7" path="res://Sounds/Musics/GameOverMusic.mp3" id="14_sxh28"]
+[ext_resource type="PackedScene" uid="uid://rwfis4pjr2lq" path="res://Prefabs/UI/CommandsPanel.tscn" id="17_6buqo"]
 [ext_resource type="AudioStream" uid="uid://o5ke6ejqdk78" path="res://Sounds/Sfxs/ExpCollectedSfx.wav" id="17_puyfy"]
 [ext_resource type="AudioStream" uid="uid://d0oems3kjpea2" path="res://Sounds/Sfxs/CardSellectedSfx.mp3" id="18_0pqn7"]
 
@@ -354,7 +355,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("13_mpxct")
 
-[node name="PausePanel" type="Panel" parent="CanvasLayer/Control" node_paths=PackedStringArray("settingBackgroundPanel")]
+[node name="PausePanel" type="Panel" parent="CanvasLayer/Control" node_paths=PackedStringArray("settingBackgroundPanel", "commandsPanel")]
 process_mode = 3
 visible = false
 layout_mode = 1
@@ -365,6 +366,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_51ucs")
 settingBackgroundPanel = NodePath("PauseButtonsPanel/SettingsBackgroundPanel")
+commandsPanel = NodePath("PauseButtonsPanel/CommandsPanel")
 
 [node name="TitleLabel" type="Label" parent="CanvasLayer/Control/PausePanel"]
 layout_mode = 1
@@ -399,10 +401,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hjuar")
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="CanvasLayer/Control/PausePanel/PauseButtonsPanel"]
 layout_mode = 0
-offset_left = 277.0
-offset_top = 224.0
-offset_right = 362.0
-offset_bottom = 340.0
+offset_left = 276.0
+offset_top = 199.0
+offset_right = 363.0
+offset_bottom = 345.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -424,6 +426,24 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_bcam4")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_bcam4")
 theme_override_styles/focus = SubResource("StyleBoxFlat_bcam4")
 text = "Continue"
+
+[node name="CommandsButton" type="Button" parent="CanvasLayer/Control/PausePanel/PauseButtonsPanel/ButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_rsjyn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bcam4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bcam4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bcam4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_bcam4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bcam4")
+text = "Commands"
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/Control/PausePanel/PauseButtonsPanel/ButtonsContainer"]
 layout_mode = 2
@@ -479,6 +499,9 @@ text = "Exit"
 [node name="SettingsBackgroundPanel" parent="CanvasLayer/Control/PausePanel/PauseButtonsPanel" instance=ExtResource("13_4csfd")]
 layout_mode = 1
 
+[node name="CommandsPanel" parent="CanvasLayer/Control/PausePanel/PauseButtonsPanel" instance=ExtResource("17_6buqo")]
+layout_mode = 1
+
 [node name="UpgradePanel" type="Panel" parent="CanvasLayer/Control"]
 process_mode = 3
 visible = false
@@ -530,6 +553,7 @@ bus = &"Sfx"
 [connection signal="timeout" from="EnemySpawnManager/Timer" to="EnemySpawnManager" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Control/GameOverPanel/PlayAgainButton" to="CanvasLayer/Control/GameOverPanel/PlayAgainButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/PausePanel/PauseButtonsPanel/ButtonsContainer/ContinueButton" to="CanvasLayer/Control/PausePanel" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/PausePanel/PauseButtonsPanel/ButtonsContainer/CommandsButton" to="CanvasLayer/Control/PausePanel" method="_on_commands_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/PausePanel/PauseButtonsPanel/ButtonsContainer/SettingsButton" to="CanvasLayer/Control/PausePanel" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/PausePanel/PauseButtonsPanel/ButtonsContainer/MainMenuButton" to="CanvasLayer/Control/PausePanel" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/PausePanel/PauseButtonsPanel/ButtonsContainer/ExitButton" to="CanvasLayer/Control/PausePanel" method="_on_exit_button_pressed"]
