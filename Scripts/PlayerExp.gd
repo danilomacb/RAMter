@@ -3,6 +3,7 @@ extends Node
 signal OnLevelUp
 
 @onready var expBar: TextureProgressBar = get_node("/root/Game/CanvasLayer/Control/ExpBar")
+@onready var lvLabel: Label = get_node("/root/Game/CanvasLayer/Control/PlayerPanelBg/LvPanel/LvLabel")
 
 @export var lvUpSfx: AudioStreamPlayer2D
 
@@ -29,3 +30,4 @@ func LevelUp():
 	get_node("/root/Game/CanvasLayer/Control/UpgradePanel").visible = true
 	get_tree().paused = true
 	Globals.ShowingLvUpPanel = true
+	lvLabel.text = str(lv)
