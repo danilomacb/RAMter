@@ -26,6 +26,13 @@ func _on_continue_button_pressed():
 	Pause()
 
 func _on_main_menu_button_pressed():
+	Globals.UpgradeAttackSpeedCounter = 0
+	Globals.UpgradeMultiShotCounter = 0
+	Globals.UpgradeReverseShotCounter = 0
+	Globals.UpgradePenetratorCounter = 0
+	Globals.UpgradeReflectorCounter = 0
+	Globals.UpgradeDeathArrowCounter = 0
+	
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 func _on_exit_button_pressed():
