@@ -9,15 +9,15 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6hvu"]
 bg_color = Color(0.937255, 0.67451, 0.156863, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
 border_color = Color(0.647059, 0.54902, 0.152941, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 expand_margin_left = 5.0
 expand_margin_right = 5.0
 
@@ -50,20 +50,22 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -38.0
-offset_top = -106.0
-offset_right = 38.0
-offset_bottom = -20.0
+offset_left = -106.0
+offset_top = -298.0
+offset_right = 106.0
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_p4dpe")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_s6hvu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_s6hvu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_s6hvu")
@@ -72,10 +74,12 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_s6hvu")
 text = "Play"
 
 [node name="Commands" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_p4dpe")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_s6hvu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_s6hvu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_s6hvu")
@@ -84,10 +88,12 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_s6hvu")
 text = "Commands"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_p4dpe")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_s6hvu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_s6hvu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_s6hvu")
@@ -96,10 +102,12 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_s6hvu")
 text = "Settings"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_p4dpe")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_s6hvu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_s6hvu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_s6hvu")

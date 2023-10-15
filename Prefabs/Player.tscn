@@ -150,7 +150,7 @@ autoplay = "Idle"
 shape = SubResource("RectangleShape2D_s27x8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
