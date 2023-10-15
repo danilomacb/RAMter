@@ -8,6 +8,7 @@ enum EnemyType {BasicEnemy, PassengerEnemy}
 @export var damage: int
 @export var timer: Timer
 @export var enemyType: EnemyType
+@export var hp: Hp
 
 var collidingWithPlayer: bool = false
 var playerBody: CharacterBody2D

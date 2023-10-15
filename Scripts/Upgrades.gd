@@ -2,7 +2,7 @@ extends Node2D
 
 var playerArrow = load("res://Prefabs/PlayerArrow.tscn")
 
-var base_angle_diff = PI/12
+var base_angle_diff = PI/24
 var arrowSpeed: float = 2.0
 
 func InstantiateArrows(playerPos, bowPos, game, mousePos):
