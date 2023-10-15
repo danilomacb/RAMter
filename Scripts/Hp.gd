@@ -104,5 +104,13 @@ func Death():
 		
 		get_parent().queue_free()
 
+func Heal(healAmount):
+	if curHp + healAmount < maxHp:
+		curHp += healAmount
+	else:
+		curHp = maxHp
+	
+	hpBar.value = (curHp / maxHp) * 100
+
 func _on_timer_timeout():
 	parent.canMove = true

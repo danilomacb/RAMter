@@ -6,6 +6,7 @@ signal OnLevelUp
 @onready var lvLabel: Label = get_node("/root/Game/CanvasLayer/Control/PlayerPanelBg/LvPanel/LvLabel")
 
 @export var lvUpSfx: AudioStreamPlayer2D
+@export var hp: Hp
 
 var expCollected: int
 var lv: int
@@ -31,3 +32,5 @@ func LevelUp():
 	get_tree().paused = true
 	Globals.ShowingLvUpPanel = true
 	lvLabel.text = str(lv)
+	
+	hp.Heal(1)

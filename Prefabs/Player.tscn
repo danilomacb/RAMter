@@ -128,7 +128,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootTimer", "dashTimer", "dashCooldownTimer", "animatedSprite2d", "bow", "hp", "dashTrail", "shootSfx", "dashSfx", "cooldownBar") groups=["Player"]]
 collision_layer = 28
 script = ExtResource("1_elqdo")
-moveSpeed = 90.0
+moveSpeed = 100.0
 dashSpeed = 250.0
 shootTimer = NodePath("ShootTimer")
 dashTimer = NodePath("DashTimer")
@@ -196,12 +196,13 @@ stream = ExtResource("9_b4t37")
 bus = &"Sfx"
 
 [node name="Hp" parent="." instance=ExtResource("3_1l1p5")]
-maxHp = 20.0
+maxHp = 10.0
 invulnerabilityTime = 1.0
 
-[node name="PlayerExp" type="Node" parent="." node_paths=PackedStringArray("lvUpSfx")]
+[node name="PlayerExp" type="Node" parent="." node_paths=PackedStringArray("lvUpSfx", "hp")]
 script = ExtResource("4_8yrjw")
 lvUpSfx = NodePath("LvUpSfx")
+hp = NodePath("../Hp")
 
 [node name="LvUpSfx" type="AudioStreamPlayer2D" parent="PlayerExp"]
 process_mode = 3
