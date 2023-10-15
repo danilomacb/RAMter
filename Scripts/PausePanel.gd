@@ -2,19 +2,17 @@ extends Panel
 
 @export var settingBackgroundPanel: Panel
 
-var gamePaused: bool = false
-
 func _process(delta):
 	if Input.is_action_just_pressed("Pause"):
 		Pause()
 
 func Pause():
-	if !gamePaused:
-		gamePaused = true
+	if !Globals.GamePaused:
+		Globals.GamePaused = true
 		visible = true
 		get_tree().paused = true
 	else:
-		gamePaused = false
+		Globals.GamePaused = false
 		visible = false
 		
 		if !Globals.ShowingLvUpPanel:

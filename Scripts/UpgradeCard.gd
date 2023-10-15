@@ -35,8 +35,9 @@ func RandomizeUpgradeCard():
 func _on_pressed():
 	upgrades.AddUpgrade(cardResources[currentUpgradeIndex].upgradeType)
 	get_parent().visible = false
-	get_tree().paused = false
 	Globals.ShowingLvUpPanel = false
 	Globals.InstantiatedCardsIndexes.clear()
-	
 	cardSelectedSfx.play()
+	
+	if !Globals.GamePaused:
+		get_tree().paused = false
