@@ -7,6 +7,7 @@ enum HpType {Player, Enemy}
 @export var invulnerabilityTime: float
 @export var expToDrop: Globals.ExpType
 @export var playerTakeDamageSfx: AudioStreamPlayer2D
+@export var timer: Timer
 
 @onready var curHp = maxHp
 @onready var game = get_node("/root/Game")
@@ -15,6 +16,7 @@ enum HpType {Player, Enemy}
 @onready var gameMusic: AudioStreamPlayer2D = get_node("/root/Game/GameMusic")
 @onready var gameOverMusic: AudioStreamPlayer2D = get_node("/root/Game/GameOverMusic")
 @onready var killsLabel: Label = get_node("/root/Game/CanvasLayer/Control/KillsLabel")
+@onready var parent = get_parent()
 
 var damageIndicator: PackedScene = load("res://Prefabs/DamageIndicator.tscn")
 var exp: PackedScene = load("res://Prefabs/Exp.tscn")
@@ -34,7 +36,7 @@ func TakeDamage(damage):
 	
 	var instantiatedDamageIndicator = damageIndicator.instantiate()
 	instantiatedDamageIndicator.label.text = str(damage)
-	instantiatedDamageIndicator.global_position = get_parent().global_position
+	instantiatedDamageIndicator.global_position = parent.global_position
 	
 	if hpType == HpType.Player:
 		hpBar.value = (curHp / maxHp) * 100
@@ -42,13 +44,17 @@ func TakeDamage(damage):
 		
 		playerTakeDamageSfx.play()
 	
+	if hpType == HpType.Enemy:
+		timer.start()
+		parent.canMove = false
+	
 	get_node("/root/Game").add_child(instantiatedDamageIndicator)
 	
 	if curHp <= 0:
 		Death()
 
 func Blink():
-	var sprite = get_parent().get_node("Sprite")
+	var sprite = parent.get_node("Sprite")
 	var tween = create_tween()
 	
 	for i in 5:
@@ -97,3 +103,6 @@ func Death():
 		killsLabel.text = str(killsLabel.killsCounter)
 		
 		get_parent().queue_free()
+
+func _on_timer_timeout():
+	parent.canMove = true

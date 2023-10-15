@@ -13,6 +13,7 @@ var collidingWithPlayer: bool = false
 var playerBody: CharacterBody2D
 var playerPos: Vector2
 var direction: Vector2
+var canMove: bool = true
 
 func _ready():
 	playerPos = get_node("/root/Game/Player").global_position
@@ -23,7 +24,7 @@ func _physics_process(delta):
 	Pass(delta)
 
 func Move(delta):
-	if enemyType == EnemyType.PassengerEnemy:
+	if !canMove || enemyType == EnemyType.PassengerEnemy:
 		return
 	
 	playerPos = get_node("/root/Game/Player").global_position
@@ -34,7 +35,7 @@ func Move(delta):
 	Flip(playerPos)
 
 func Pass(delta):
-	if enemyType == EnemyType.BasicEnemy:
+	if !canMove || enemyType == EnemyType.BasicEnemy:
 		return
 	
 	velocity = direction * moveSpeed

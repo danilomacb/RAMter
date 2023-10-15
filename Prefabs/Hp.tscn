@@ -3,10 +3,16 @@
 [ext_resource type="Script" path="res://Scripts/Hp.gd" id="1_4wkjy"]
 [ext_resource type="AudioStream" uid="uid://04pt01x31cb8" path="res://Sounds/Sfxs/PlayerTakeDamageSfx.wav" id="2_mu3in"]
 
-[node name="Hp" type="Node" node_paths=PackedStringArray("playerTakeDamageSfx")]
+[node name="Hp" type="Node" node_paths=PackedStringArray("playerTakeDamageSfx", "timer")]
 script = ExtResource("1_4wkjy")
 playerTakeDamageSfx = NodePath("PlayerTakeDamageSfx")
+timer = NodePath("Timer")
 
 [node name="PlayerTakeDamageSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_mu3in")
 bus = &"Sfx"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
