@@ -5,7 +5,7 @@ extends Button
 @onready var titleLabel: Label = $TitleLabel
 @onready var textureRect: TextureRect = $TextureRect
 @onready var descriptionLabel: Label = $DescriptionLabel
-@onready var cardSelectedSfx: AudioStreamPlayer2D = get_node("/root/Game/CardSelectedSfx")
+@onready var cardSelectedSfx: AudioStreamPlayer2D = get_node("/root/Game/Player/CardSelectedSfx")
 
 var upgrades = load("res://Scripts/Upgrades.gd").new()
 

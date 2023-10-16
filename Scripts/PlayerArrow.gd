@@ -6,7 +6,7 @@ extends Area2D
 @onready var penetratorCounter: int = Globals.UpgradePenetratorCounter
 @onready var reflectorCounter: int = Globals.UpgradeReflectorCounter
 @onready var camera: Camera2D = get_node("/root/Game/Player/Camera2D")
-@onready var arrowHitSfx: AudioStreamPlayer2D = get_node("/root/Game/ArrowHitSfx")
+@onready var arrowHitSfx: AudioStreamPlayer2D = get_node("/root/Game/Player/ArrowHitSfx")
 
 @onready var width = ProjectSettings.get_setting("display/window/size/viewport_width") / camera.zoom.x / 2
 @onready var height = ProjectSettings.get_setting("display/window/size/viewport_height") / camera.zoom.y / 2

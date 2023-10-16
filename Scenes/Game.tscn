@@ -144,6 +144,31 @@ player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_e80ac")]
 
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="Player"]
+process_mode = 3
+stream = ExtResource("13_1rb0j")
+autoplay = true
+bus = &"Music"
+
+[node name="GameOverMusic" type="AudioStreamPlayer2D" parent="Player"]
+process_mode = 3
+stream = ExtResource("14_sxh28")
+bus = &"Music"
+
+[node name="ArrowHitSfx" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("14_a7jbe")
+bus = &"Sfx"
+
+[node name="ExpCollectedSfx" type="AudioStreamPlayer2D" parent="Player"]
+process_mode = 3
+stream = ExtResource("17_puyfy")
+bus = &"Sfx"
+
+[node name="CardSelectedSfx" type="AudioStreamPlayer2D" parent="Player"]
+process_mode = 3
+stream = ExtResource("18_0pqn7")
+bus = &"Sfx"
+
 [node name="EnemySpawnManager" type="Node" parent="." node_paths=PackedStringArray("timer")]
 script = ExtResource("3_sp687")
 timer = NodePath("Timer")
@@ -552,31 +577,6 @@ offset_left = 200.0
 offset_top = -150.0
 offset_right = 400.0
 offset_bottom = 150.0
-
-[node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("13_1rb0j")
-autoplay = true
-bus = &"Music"
-
-[node name="GameOverMusic" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("14_sxh28")
-bus = &"Music"
-
-[node name="ArrowHitSfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("14_a7jbe")
-bus = &"Sfx"
-
-[node name="ExpCollectedSfx" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("17_puyfy")
-bus = &"Sfx"
-
-[node name="CardSelectedSfx" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("18_0pqn7")
-bus = &"Sfx"
 
 [connection signal="timeout" from="EnemySpawnManager/Timer" to="EnemySpawnManager" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Control/GameOverPanel/PlayAgainButton" to="CanvasLayer/Control/GameOverPanel/PlayAgainButton" method="_on_pressed"]

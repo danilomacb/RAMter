@@ -4,7 +4,7 @@ extends Area2D
 @export var sprite2D: Sprite2D
 @export var crystalsTextures: Array[CompressedTexture2D]
 
-@onready var expCollectedSfx: AudioStreamPlayer2D = get_node("/root/Game/ExpCollectedSfx")
+@onready var expCollectedSfx: AudioStreamPlayer2D = get_node("/root/Game/Player/ExpCollectedSfx")
 
 var expIncrementor: int
 var goToPlayer: bool = false

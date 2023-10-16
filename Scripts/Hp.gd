@@ -13,8 +13,8 @@ enum HpType {Player, Enemy}
 @onready var game = get_node("/root/Game")
 @onready var gameOverPanel = get_node("/root/Game/CanvasLayer/Control/GameOverPanel")
 @onready var hpBar: TextureProgressBar = get_node("/root/Game/CanvasLayer/Control/HpBar")
-@onready var gameMusic: AudioStreamPlayer2D = get_node("/root/Game/GameMusic")
-@onready var gameOverMusic: AudioStreamPlayer2D = get_node("/root/Game/GameOverMusic")
+@onready var gameMusic: AudioStreamPlayer2D = get_node("/root/Game/Player/GameMusic")
+@onready var gameOverMusic: AudioStreamPlayer2D = get_node("/root/Game/Player/GameOverMusic")
 @onready var killsLabel: Label = get_node("/root/Game/CanvasLayer/Control/KillsLabel")
 @onready var parent = get_parent()
 
