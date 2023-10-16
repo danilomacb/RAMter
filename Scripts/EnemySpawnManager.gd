@@ -39,7 +39,6 @@ func SpawnEnemys():
 	timer.start()
 	
 	var instantiatedEnemy = GetRandomEnemy().instantiate()
-	instantiatedEnemy.hp.maxHp += int(time / 20)
 	instantiatedEnemy.global_position = GetRandomEnemyPos()
 	add_child(instantiatedEnemy)
 
@@ -66,17 +65,17 @@ func GetRandomEnemyPos() -> Vector2:
 func GetRandomEnemy() -> PackedScene:
 	var randomEnemyIndex = rng.randi_range(0, 99)
 	
-	var chance = [88, 93, 98]
+	var chance = [96, 98, 99]
 	
-	for i in chance.size() - 1:
-		chance[i] -= int(time / 5)
+	chance[0] = 96 - int(time / 5) - int(time / 10) 
+	chance[1] = 98 - int(time / 5)
 	
 	if chance[0] < 5:
 		chance[0] = 5
 	
 	if chance[1] < 15:
 		chance[1] = 15
-	
+		
 	if randomEnemyIndex < chance[0]:
 		return enemys[0]
 	

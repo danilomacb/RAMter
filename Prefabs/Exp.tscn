@@ -49,7 +49,7 @@ _data = {
 size = Vector2(10, 11.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mo6xa"]
-radius = 109.018
+radius = 51.2445
 
 [sub_resource type="Animation" id="Animation_qnjhj"]
 resource_name = "Idle"
