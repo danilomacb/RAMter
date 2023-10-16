@@ -13,7 +13,8 @@ config_version=5
 config/name="RAMter"
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://Sprites/icon.svg"
+config/icon="res://Sprites/icon-256.png"
+config/windows_native_icon="res://Sprites/icon-256.ico"
 
 [autoload]
 
