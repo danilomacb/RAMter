@@ -40,3 +40,5 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 		rotation = atan2(direction.y, direction.x)
 		
 		reflectorCounter -= 1
+	else:
+		queue_free()
