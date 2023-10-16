@@ -42,10 +42,13 @@ func SetResolutionsToOptionButton():
 		resolutionOptionButton.add_item(str(commonResolutions[i].x) + "x" + str(commonResolutions[i].y))
 
 func SetUserResolution():
-	get_viewport().size = screenResolution
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	
-	resolutionOptionButton.select(currentResolutionIndex)
+	if !Globals.UserResolutionSetted:
+		get_viewport().size = screenResolution
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		
+		resolutionOptionButton.select(currentResolutionIndex)
+		
+		Globals.UserResolutionSetted = true
 
 func _on_close_button_pressed():
 	settingBackgroundPanel.visible = false

@@ -14,3 +14,4 @@ var ShowingLvUpPanel: bool = false
 var GamePaused: bool = false
 var InstantiatedCardsIndexes: Array[UpgradeType]
 var AutoShoot: bool = false
+var UserResolutionSetted: bool = false
