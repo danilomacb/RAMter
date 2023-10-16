@@ -39,6 +39,7 @@ func SpawnEnemys():
 	timer.start()
 	
 	var instantiatedEnemy = GetRandomEnemy().instantiate()
+	instantiatedEnemy.moveSpeed += time / 5
 	instantiatedEnemy.global_position = GetRandomEnemyPos()
 	add_child(instantiatedEnemy)
 
